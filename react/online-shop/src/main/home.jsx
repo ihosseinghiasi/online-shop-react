@@ -49,7 +49,7 @@ const Home = () => {
         <p className="pCategories">انتخاب دسته بندی</p>
 
       {
-         categories.map((category, key) => <CategoryItem image={category.image} title={category.title} key={category.id}/>)
+         categories.map((category) => <CategoryItem image={category.image} title={category.title} />)
       }
 
       </div>

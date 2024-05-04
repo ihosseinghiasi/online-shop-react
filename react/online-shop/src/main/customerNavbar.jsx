@@ -34,7 +34,7 @@ const CustomerNavbar = () => {
 
         <ul className="navbar-nav me-auto me-5">
              <li className="nav-item ms-3">
-                <Link to="/register" className="nav-link linkColor">
+                <Link to="/smsForm" className="nav-link linkColor">
                   <img src={user} alt="icon" />
                 </Link>
             </li>
