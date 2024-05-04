@@ -1,5 +1,6 @@
 import React from "react";
 import Home from "./main/home"
+import Register from './authentication/register'
 import CustomerNavbar from "./main/customerNavbar";
 import { Route, Routes } from "react-router-dom";
 
@@ -9,6 +10,7 @@ const App = () => {
            <CustomerNavbar />
            <Routes>
                 <Route path="/" element={<Home />}/>
+                <Route path="/register" element={<Register />}/>
            </Routes>
         </>
     );
