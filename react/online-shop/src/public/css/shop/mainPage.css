@@ -5,6 +5,7 @@
 @font-face {
     font-family: VazirmatnPersian;
     src: url('../../vazir/misc/Farsi-Digits/fonts/webfonts/Vazirmatn-FD-Medium.woff2') format('woff2');
+    src: url('../../vazir/misc/Farsi-Digits/fonts/webfonts/Vazirmatn-FD-Medium.woff2') format('woff2');
   }
 
   @font-face {
@@ -24,11 +25,12 @@ body {
 }
 
 .container-flud {
+    direction: rtl;
+    font-family: VazirmatnPersian;
     width: 100%;
     max-width: 1800px;
     margin: 0px;
     padding: 0px;
-    font-size: 1em;
 }
 
 .main {
@@ -111,6 +113,7 @@ body {
     height: auto;
     width: 1225px;
     margin: 20px 117px 20px 0;
+    background-color: red;
 }
 
 .pCategories {
@@ -121,6 +124,7 @@ body {
 
 .categoryItem {
     display: inline-block;
+    float: inline-start;
     height: 350px;
     width: 350px;
     margin: 20px 10px 20px 10px;
@@ -153,6 +157,8 @@ body {
 }
 
 footer {
+    display: block;
+    float: inline-start;
     height: 70vh;
     width: 100%;
     background-color: #020720;

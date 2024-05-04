@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import '../public/css/shop/navbar.css'
 import user from '../public/icons/user.svg'
+import '../public/css/shop/navbar.css'
 
 const CustomerNavbar = () => {
   return (
@@ -45,7 +45,7 @@ const CustomerNavbar = () => {
             </li>
             <li className="nav-item ms-5">
                 <button className="callButton">
-                    <a href="/" className="nav-link linkCallToMe">تماس با ما</a>
+                    <a href="/" className="nav-link linkCallToMe text-light">تماس با ما</a>
                 </button>
             </li>
         </ul>

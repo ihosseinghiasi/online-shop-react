@@ -1,19 +1,18 @@
 import { useState, useEffect } from "react";
+import CategoryItem from './categoryItem'
 import mainImage from "../public/pictures/shopping01.jpg";
 import "../public/css/shop/mainPage.css";
 import Footer from "./footer";
 import axios from "axios";
 
 const Home = () => {
-
-  const [categories, setCategories] = useState("")
-
+  const [categories, setCategories] = useState([])
+  
   useEffect(()=> {
     axios.get('http://localhost:5858/admin-cPanel/category/showCategories').then((res)=> {
-      setCategories(res.data)
+      setCategories(res.data.reverseCategories)
     })
   }, [])
-
 
   return (
     <>
@@ -49,13 +48,9 @@ const Home = () => {
         </div>
         <p className="pCategories">انتخاب دسته بندی</p>
 
-        {
-          Object.values(categories).forEach((categoriesList) => {
-            categoriesList.map((category1) => (
-             <h1> {category1.title} </h1>
-            ))
-          })
-        }
+      {
+         categories.map((category, key) => <CategoryItem image={category.image} title={category.title} key={category.id}/>)
+      }
 
       </div>
 

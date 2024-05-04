@@ -1,16 +1,16 @@
-// import { useState } from "react";
 import "../public/css/shop/mainPage.css"
 
-const CategoryItem = () => {
-    // const [image, setImage] = useState
-    // setImage(myImage)
-    // console.log(image)
+const CategoryItem = ({image, title}) => {
     return ( 
         <>
-          <div className="bg-danger my-5 mx-5">
-            <p className="text-info">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim itaque, odio hic suscipit, quisquam expedita temporibus ipsam quas atque minima cupiditate omnis necessitatibus dolores reprehenderit nam beatae magnam soluta unde?</p>
-          </div>
-            
+          <div className="categoryFrame">
+                <a href="/admin-cPanel/category/<%= category.categoryName %>/<%= category.id %>">
+                    <div className="categoryItem">
+                        <img src={image} alt="categoryImage" />
+                        <p> {title} </p>
+                    </div>    
+                </a>
+            </div>            
         </>
      )
 }
