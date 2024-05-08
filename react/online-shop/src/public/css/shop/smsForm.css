@@ -22,7 +22,7 @@ body {
     font-size: 1em;
 }
 
-.registerForm {
+.registerSmsForm {
     height: 500px;
     width: 80%;
     border: 2px solid lightgray;

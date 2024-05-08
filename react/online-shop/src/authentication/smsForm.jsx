@@ -23,7 +23,7 @@ const SmsForm = () => {
     
     return ( 
         <>
-            <div class="registerForm"></div>    
+            <div class="registerSmsForm"></div>    
             <div class="smsForm">
                 <p class="mt-4">شماره همراه</p>
                 <form onSubmit={sendPhoneNumber} >

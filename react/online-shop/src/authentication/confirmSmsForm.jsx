@@ -42,7 +42,7 @@ const ConfirmSms = () => {
 
     return ( 
         <>
-            <div className="registerForm"></div>
+            <div className="registerSmsForm"></div>
             <div className="smsForm">
                 <form onSubmit={sendVerifyCode}>
                     <p className="mt-3 phoneNumber"> {phoneNumber} </p>

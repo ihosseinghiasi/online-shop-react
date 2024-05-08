@@ -1,20 +1,53 @@
+import { useEffect, useState } from 'react';
 import '../public/css/shop/register.css'
+import axios from 'axios';
 
 const Register = () => {
+
+    const [phoneNumber, setPhoneNumber] = useState(0)    
+    const [firstName, setFirstName] = useState("")
+    const [lastName, setLasttName] = useState("")
+    const [email, setEmail] = useState("")
+    const [password, setPasseord] = useState("")
+
+    useEffect(()=> {
+        setPhoneNumber(localStorage.getItem('localPhoneNumber'))
+    },[])
+
+    async function userRegister(event) {
+        event.preventDefault()
+        let data = {
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        password: password,
+        phoneNumber: phoneNumber
+    }
+
+        console.log(data)
+        await axios.post('http://localhost:5000/authentication/register', data)
+    }
     return ( 
        <>
-            <div className="registerForm">
+            <div className="registerUserForm mb-3">
                 <div className="loginPicture"></div>
                 <div className="loginForm">
-                 <h2>ثبت نام</h2>
-                <form action="">
+                 <h2 className='mt-3'>ثبت نام</h2>
+                <form onSubmit={userRegister}>
                     <div className="mb-3">
-                        <input type="text" className="form-control mt-3"  placeholder="نام" name="firstName"/>
-                        <input type="text" className="form-control mt-3"  placeholder="نام خانوادگی" name="lastName"/>
-                        <input type="email" className="form-control mt-3"  placeholder="ایمیل" name="email"/>
-                        <input type="password" className="form-control mt-3"  placeholder="کلمه عبور" name="password"/>
+                        <input type="text" className="form-control mt-3"  placeholder="نام" name="firstName"
+                            onChange={(event)=> setFirstName(event.target.value)}
+                        />
+                        <input type="text" className="form-control mt-3"  placeholder="نام خانوادگی" name="lastName"
+                            onChange={(event)=> setLasttName(event.target.value)}
+                        />
+                        <input type="email" className="form-control mt-3"  placeholder="ایمیل" name="email"
+                            onChange={(event)=> setEmail(event.target.value)}
+                        />
+                        <input type="password" className="form-control mt-3"  placeholder="کلمه عبور" name="password"
+                            onChange={(event)=> setPasseord(event.target.value)}
+                        />
                         <input type="password" className="form-control mt-3"  placeholder="تکرار کلمه عبور" name=""/>
-                        <input type="text" className="form-control invisible" name="phone" value="<%=phoneNumber%>"/>
                     </div>
                     <div className="row">
                         <div className="d-grid gap-2 col-10 mx-auto float-end">
