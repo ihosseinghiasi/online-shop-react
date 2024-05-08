@@ -9,7 +9,7 @@ const Home = () => {
   const [categories, setCategories] = useState([])
   
   useEffect(()=> {
-    axios.get('http://localhost:5858/admin-cPanel/category/showCategories').then((res)=> {
+    axios.get('http://localhost:5000/admin-cPanel/category/showCategories').then((res)=> {
       setCategories(res.data.reverseCategories)
     })
   }, [])
