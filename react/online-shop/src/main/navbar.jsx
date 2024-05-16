@@ -2,7 +2,17 @@ import { Link } from 'react-router-dom';
 import user from '../public/icons/user.svg'
 import '../public/css/shop/navbar.css'
 
-const CustomerNavbar = () => {
+const Navbar = () => {
+
+  function userLogin() {
+    localStorage.setItem('userType', 'user')
+  }
+
+  function adminLogin() {
+    localStorage.setItem('userType', 'admin')
+  }
+
+
   return (
     <>
       <nav className="navbar navbar-expand-sm sticky-top navColor" dir='rtl'>
@@ -22,14 +32,12 @@ const CustomerNavbar = () => {
               <li><Link></Link></li>
               </ul>
           </li>
-          <li className="nav-item dropdown mx-2 my-3" dir="rtl">
-            <a className="nav-link dropdown-toggle linkColor" href='/' role="button"
-             data-bs-toggle="dropdown">ناحیه کاربر  </a>
-            <ul className="dropdown-menu dropdownMenu">
-                    <li><Link className="dropdown-item dropdownItem" to="/"> ناحیه کاربر </Link></li>
-                    <li><Link className="dropdown-item dropdownItem" to="/"> ناحیه مدیریت </Link></li>
-              </ul>
-          </li>   
+          <li className="nav-item mx-2 my-3">
+            <Link className="nav-link linkColor" to="/login" onClick={userLogin}>پنل کاربر</Link>
+          </li>
+          <li className="nav-item mx-2 my-3">
+            <Link className="nav-link linkColor" to="/login" onClick={adminLogin}>پنل مدیر</Link>
+          </li>
         </ul>
 
         <ul className="navbar-nav me-auto me-5">
@@ -57,4 +65,4 @@ const CustomerNavbar = () => {
   );
 }
 
-export default CustomerNavbar;
+export default Navbar;

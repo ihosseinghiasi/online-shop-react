@@ -42,3 +42,8 @@
 .navColor {
     background-color: #020720;
 }
+
+.navUser {
+    font-size: 1.5em;
+    font-weight: bolder;
+}

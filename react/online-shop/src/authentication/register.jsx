@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../public/css/shop/register.css'
 import axios from 'axios';
 
@@ -10,22 +11,30 @@ const Register = () => {
     const [email, setEmail] = useState("")
     const [password, setPasseord] = useState("")
 
+    const navigate = useNavigate()
+
     useEffect(()=> {
-        setPhoneNumber(localStorage.getItem('localPhoneNumber'))
+        setPhoneNumber(localStorage.getItem('phoneNumber'))
     },[])
-
-    async function userRegister(event) {
+    
+    function userRegister(event) {
         event.preventDefault()
-        let data = {
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        password: password,
-        phoneNumber: phoneNumber
-    }
 
-        console.log(data)
-        await axios.post('http://localhost:5000/authentication/register', data)
+        let data = {
+        firstName,
+        lastName,
+        email,
+        password,
+        phoneNumber
+    }
+          axios.post('http://localhost:4000/register', data
+        , {
+            withCredentials: true
+         })
+         console.log('registerd')
+            // localStorage.clear()
+            // navigate('/')
+         
     }
     return ( 
        <>

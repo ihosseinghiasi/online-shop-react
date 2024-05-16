@@ -1,35 +1,28 @@
 import '../public/css/shop/smsForm.css'
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import Countdown from 'react-countdown';
+import axios from 'axios';
 
 const ConfirmSms = () => {
 
     const [phoneNumber, setPhoneNumber] = useState(0)
-    const [timer, setTimer] = useState(true)
     const [verifyCode, setVerifyCode] = useState(0)
+    const [timer, setTimer] = useState(true)
     const navigate = useNavigate()
 
-    let data = {
-        code: verifyCode
-    }
-
     useEffect(()=> {
-        setPhoneNumber(localStorage.getItem('localPhoneNumber'))
+        setPhoneNumber(localStorage.getItem('phoneNumber'))
     },[])
     
     async function sendVerifyCode(event) {
         event.preventDefault()
-        await axios.post('http://localhost:5000/authentication/setConfirmSms', data)  
-        getVerifyCodeStatus()
-    }
-
-    async function getVerifyCodeStatus() {
-        const status = await axios.get('http://localhost:5000/authentication/getConfirmSms')
-        if(status.data.verfiyCodeStatus === true) {
-            navigate('/register')
+        let data = {
+            verifyCode
         }
+        await axios.post('http://localhost:4000/confirmSms', data).then((res)=> {
+        })
+        navigate('/register')
     }
     
     const renderer = ({ minutes, seconds, completed }) => {
@@ -55,7 +48,6 @@ const ConfirmSms = () => {
                         renderer={renderer}
                         />
                     </div>
-
                 </form>
             </div>
         </>

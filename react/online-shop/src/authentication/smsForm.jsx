@@ -9,28 +9,30 @@ const SmsForm = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        localStorage.setItem('localPhoneNumber', phoneNumber)
+        localStorage.setItem('phoneNumber', phoneNumber)
     },[phoneNumber])
-
+    
     async function sendPhoneNumber(event) {
-        let mydata = {
-            'phone' : phoneNumber
+        let data = {
+            phoneNumber
         }    
         event.preventDefault()
-        await axios.post('http://localhost:5000/authentication/smsRequest', mydata)
+        await axios.post('http://localhost:4000/sms', data).then((res)=> {
+            console.log(res.data)
+        })
         navigate('/confirmSmsForm')
     }
     
     return ( 
         <>
-            <div class="registerSmsForm"></div>    
-            <div class="smsForm">
-                <p class="mt-4">شماره همراه</p>
+            <div className="registerSmsForm"></div>    
+            <div className="smsForm">
+                <p className="mt-4">شماره همراه</p>
                 <form onSubmit={sendPhoneNumber} >
-                    <input type="text" class="smsText form-control w-75"
-                        placeholder='شماره همراه' name="phone" id="phone"
-                        onChange={(phone)=> setPhoneNumber(phone.target.value)} />
-                    <button type="submit" class="btn btn-danger mt-4">ارسال پیامک</button>
+                    <input type="text" className="smsText form-control w-75"
+                        placeholder='شماره همراه' name="phoneNumber" id="phoneNumber"
+                        onChange={(event)=> setPhoneNumber(event.target.value)} />
+                    <button type="submit" className="btn btn-danger mt-4">ارسال پیامک</button>
                 </form>
             </div>
         </>
