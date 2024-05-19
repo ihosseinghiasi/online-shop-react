@@ -4,12 +4,12 @@
 
 @font-face {
     font-family: VazirmatnPersian;
-    src: url('../../fonts/vazir/misc/Farsi-Digits/fonts/webfonts/Vazirmatn-FD-Medium.woff2') format('woff2');
+    src: url('../../vazir/misc/Farsi-Digits/fonts/webfonts/Vazirmatn-FD-Medium.woff2') format('woff2');
   }
 
   @font-face {
     font-family: VazirmatnEngilish;
-    src: url('../../fonts/vazir/fonts/webfonts/Vazirmatn-Medium.woff2');
+    src: url('../../vazir/fonts/webfonts/Vazirmatn-Medium.woff2');
 }
 
 .enField {
@@ -77,6 +77,7 @@ a{
 }
 
 .sideMenu {
+    height: 500px;
     display: inline-block;
     background-color: rgb(7, 7, 15);
 }
@@ -84,8 +85,12 @@ a{
 .sideMenu .items {
     height: 50px;
     width: 100%;
+    background-color: rgb(7, 7, 15);
     border: 0.5px solid gray;
     display: inline-block;
+    text-decoration: none;
+    font-size: 1.2em;
+    color: lightgrey;
 }
 
 .sideMenu .items:hover {
@@ -142,4 +147,10 @@ a{
     width: 180px;
     float: left;
     margin: 25px 0 0 0;
+}
+
+.profileSize {
+    margin-top: 15px;
+    height: 50px;
+    width: 50px;
 }

@@ -1,6 +1,7 @@
 const User = require('../../models/user')
 // const EmailTemplate = require('../../models/emailTemplate')
 // const emailSender = require('../../middlewares/emailSender')
+const findPersion = require('../../middlewares/findPersion')
 const jwt = require('jsonwebtoken')
 const {Smsir} = require('smsir-js')
 const bcrypt = require('bcrypt')
@@ -39,33 +40,24 @@ const handleErrors = (err) => {
     return errors
 }
 
-module.exports.home = async(req, res, next) => {
-    try {
-        console.log('logined')
-    } catch (err) {
-        
-    }
-}
-
-
-module.exports.adminLogin = async (req, res, next) => {
+module.exports.login = async (req, res, next) => {
     try {
             try {
-                const { email, password } = req.body
-                const user = await User.login(email, password)
-                const token = createToken(user._id)
-        
-                res.cookie('comercial', token, {
-                    withCrdentials: true,
-                    httpOnly: false,
-                    maxAge: 1000 * maxAge
-                })
-                res.status(200).json({user: user._id, created: true})
-            } catch (err) {
-                console.log(err)
-                const errors = handleErrors(err)
-                res.json({errors, created: false})
-            }
+                    const { email, password } = req.body
+                    const user = await findPersion(email, password)
+                    
+                    const token = createToken(user._id)        
+                    res.cookie('comercial', token, {
+                        withCrdentials: true,
+                        // httpOnly: true,
+                        maxAge: 1000 * maxAge,
+                    })
+                    res.status(200).json({user: user._id, created: true})
+                } catch (err) {
+                    console.log(err)
+                    const errors = handleErrors(err)
+                    res.json({errors, created: false})
+                }
     } catch (err) {
         next(err)
     }
@@ -122,8 +114,8 @@ module.exports.register = async (req, res, next) => {
             data.password = await bcrypt.hash(data.password, salt)
 
             const user = await User.create(data)
+            
             const token = createToken(user._id)
-
             res.cookie('comercial', token, {
                 withCrdentials: true,
                 httpOnly: false,

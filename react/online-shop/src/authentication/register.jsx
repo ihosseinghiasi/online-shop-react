@@ -31,10 +31,8 @@ const Register = () => {
         , {
             withCredentials: true
          })
-         console.log('registerd')
-            // localStorage.clear()
-            // navigate('/')
-         
+            localStorage.clear()
+            navigate('/')
     }
     return ( 
        <>

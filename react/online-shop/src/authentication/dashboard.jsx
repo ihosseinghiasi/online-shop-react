@@ -1,7 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import '../public/css/shop/navbar.css'
+import { useCookies } from "react-cookie";
 
 const Dashboard = ( {fullName} ) => {
+
+    const [cookies, setCookie, removeCookie] = useCookies([])
+    const navigate = useNavigate()
+
+    const logOut = () => {
+      removeCookie('comercial')
+      navigate('/')
+    }
 
   return ( 
         <>
@@ -30,8 +39,8 @@ const Dashboard = ( {fullName} ) => {
                 <Link className="nav-link text-info navUser" to="/">{ fullName }</Link>
             </li>
             <li className="nav-item ms-3">
-                <Link href="" className="nav-link linkColor">
-                    {/* <img src={user} alt="shopping"> */}
+                <Link to="" onClick={logOut} className="nav-link linkColor">
+                     خروج
                 </Link>
             </li>
             <li className="nav-item ms-5">
@@ -46,6 +55,6 @@ const Dashboard = ( {fullName} ) => {
 
         </>
      );
-}
+    }
  
-export default Dashboard;
+    export default Dashboard;

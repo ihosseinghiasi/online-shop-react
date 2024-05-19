@@ -30,10 +30,10 @@ const Home = () => {
             setAuthenticated(true)
             setFullName(data.user)
           } 
+        }
       }
-  }
-  verifyUser()
-}, [cookies, navigate, removeCookie])
+      verifyUser()
+}, [cookies, navigate])
 
   return (
     <>
@@ -69,6 +69,7 @@ const Home = () => {
           </div>
         </div>
         <p className="pCategories">انتخاب دسته بندی</p>
+        
       </div>
 
       <footer>

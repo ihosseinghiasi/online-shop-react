@@ -5,32 +5,24 @@ import axios from "axios";
 
 export const Login = () => {
 
-    const [userType, setUserType] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-
+    const [email, setEmail] = useState("ariaghiasi@gmail.com");
+    const [password, setPassword] = useState("1024")
     const navigate = useNavigate()
 
-    useEffect(() => {
-        setUserType(localStorage.getItem('userType'));
-    }, []);
-
-    useEffect(()=> {
-        if(userType === "admin") {
-            setEmail("expresscard.eshopping@gmail.com")
-            setPassword("1024")
-        }
-    }, [userType])
-
-     function userLogin(event) {
-        let data = {
-            email: email,
-            password: password
-        }
-        event.preventDefault()
-     axios.post('http://localhost:5000/authentication/adminLogin', data)
-        navigate('/')
+    function userLogin(event) {
+    let data = {
+        email: email,
+        password: password
     }
+    event.preventDefault()
+    axios.post('http://localhost:4000/login', data, {
+        withCredentials: "include"
+    }).then((res) => {
+        if(res.status) {
+            navigate('/')
+        }
+    })
+}
 
     return (
         <>
@@ -38,7 +30,7 @@ export const Login = () => {
                 <div className="register">
                     <h3>به اکسپرس کارت خوش آمدید .</h3>
                     <p>تا کنون ثبت نام نکرده اید ؟</p>
-                    <Link to={""} className="btn btn-outline-success mt-2" role="button"> ثبت نام </Link>
+                    <Link to={"/register"} className="btn btn-outline-success mt-2" role="button"> ثبت نام </Link>
                 </div>
                 <div className="loginForm">
                     <h2 className="mt-5">ورود به سایت</h2>
