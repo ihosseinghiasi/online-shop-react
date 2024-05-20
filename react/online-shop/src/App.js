@@ -17,8 +17,8 @@ const App = () => {
                 <Route path="/smsForm" element={<SmsForm />}/>
                 <Route path="/confirmSmsForm" element={<ConfirmSmsForm />}/>
                 <Route path="/login" element={<Login />} />
-                <Route path="/admin-Counter" element={<AdminCounter />} />
-                <Route path="/admin-Add-Admin" element={<AddAdmin />} />
+                <Route path="/admin/Counter" element={<AdminCounter />} />
+                <Route path="/admin/newAdmin" element={<AddAdmin />} />
            </Routes>
         </>
     );

@@ -16,6 +16,10 @@
     font-family: VazirmatnEngilish;
 }
 
+.faField {
+    font-family: VazirmatnPersian;
+}
+
 * {box-sizing: border-box;}
 
 .accordion {
