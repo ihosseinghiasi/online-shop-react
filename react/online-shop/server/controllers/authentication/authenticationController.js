@@ -130,16 +130,8 @@ module.exports.register = async (req, res, next) => {
             // emailSender(userName, email, emailTemplate)
             localStorage.clear()
 } catch (err) {
-    console.log(err)
     const errors = handleErrors(err)
     res.json({errors, created: false})
     next(err)
 }
-}
-
-module.exports.add = async (req, res, next) => {
-    const data = req.body
-    console.log(data)
-    res.send("ok")
-    // const newAdmin = await Admin.create({})
 }

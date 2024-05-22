@@ -1,4 +1,4 @@
-const { add, verifyCodeSms, confirmVerifyCodeSms, login, register } = require('../../../controllers/authentication/authenticationController')
+const { verifyCodeSms, confirmVerifyCodeSms, login, register } = require('../../../controllers/authentication/authenticationController')
 const {checkUser} = require('../../../middlewares/checkUserAuthenticate')
 const router = require('express').Router()
 
@@ -7,6 +7,5 @@ router.post('/sms', verifyCodeSms)
 router.post('/confirmSms', confirmVerifyCodeSms)
 router.post('/login', login)
 router.post('/register', register)
-router.post('/add', add)
 
 module.exports = router

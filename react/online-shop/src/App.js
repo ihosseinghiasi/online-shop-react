@@ -7,6 +7,8 @@ import Login from "./authentication/login";
 import { Route, Routes } from "react-router-dom";
 import AdminCounter from "./adminPanel/counter";
 import AddAdmin from "./adminPanel/addAdmin";
+import AllAdmins from "./adminPanel/allAdmins";
+import ShowAdmin from "./adminPanel/showAdmin";
 
 const App = () => {
     return ( 
@@ -19,6 +21,8 @@ const App = () => {
                 <Route path="/login" element={<Login />} />
                 <Route path="/admin/Counter" element={<AdminCounter />} />
                 <Route path="/admin/newAdmin" element={<AddAdmin />} />
+                <Route path="/admin/allAdmins" element={<AllAdmins />} />
+                <Route path="/admin/showAdmin/:id" element={<ShowAdmin />} />
            </Routes>
         </>
     );
