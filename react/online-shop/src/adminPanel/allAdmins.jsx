@@ -10,13 +10,22 @@ import { useNavigate } from "react-router-dom";
 const AllAdmins = () => {
     const [ admins, setAdmins ] = useState([])
     const [adminId, setAdminId] = useState("")
+    const [persianDate, setPersianDate] = useState('')
     const navigate = useNavigate()
+
     useEffect(() => {
             const getAllAdmins = () => {
                 axios.get('http://localhost:4000/adminPanel/admin/allAdmins').then((res => {
                 setAdmins(res.data.admins)
             }))
             }
+
+            const getPersianDate = async () => {
+                await axios.get('http://localhost:4000/persianDate').then((res) => {
+                    setPersianDate(res.data)
+                })
+            }
+            getPersianDate()
             getAllAdmins()
     }, [])
 
@@ -26,7 +35,7 @@ const AllAdmins = () => {
                 withCredentials: true
                }).then((res) => {
                 if(res.data.status) {
-                    
+
                 }
                })        
         }
@@ -50,6 +59,7 @@ const AllAdmins = () => {
                             <p>پیشخوان  /  مدیران سایت  </p>
                         </div>
                         <div className="d-flex justify-content-start parsianDate">
+                            {persianDate}
                         </div>
                     </div>
     

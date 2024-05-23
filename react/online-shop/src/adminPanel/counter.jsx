@@ -1,7 +1,20 @@
 // import "../public/css/admin/accordion.css"
 import AdminNavbar from "./adminNavbar";
 import RightMenu from "./rightMenu";
+import { useEffect, useState } from "react";
+import axios from 'axios'
+
 const AdminCounter = () => {
+    const [persianDate, setPersianDate] = useState('')
+
+    useEffect(() => {
+        const getPersianDate = async () => {
+            await axios.get('http://localhost:4000/persianDate').then((res) => {
+                setPersianDate(res.data)
+            })
+        }
+        getPersianDate()
+    }, [])
     return ( 
         <>
            <AdminNavbar />
@@ -15,7 +28,7 @@ const AdminCounter = () => {
                         <p>پیشخوان</p>
                     </div>
                     <div class="d-flex justify-content-start parsianDate">
-                       <p>djhdkhfkhdkhf</p>
+                       <p>{persianDate}</p>
                     </div>
                 </div>
             <h1>admin counter</h1>

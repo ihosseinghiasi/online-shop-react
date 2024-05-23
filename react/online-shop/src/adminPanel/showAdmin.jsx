@@ -8,11 +8,20 @@ import axios from 'axios'
 import { useParams, useNavigate } from "react-router-dom";
 const ShowAdmin = () => {
 
+    const [persianDate, setPersianDate] = useState('')
     let [ values, setValues ] = useState({})
     const params = useParams()
     const navigate = useNavigate()
     
     useEffect(() => {
+
+        const getPersianDate = async () => {
+            await axios.get('http://localhost:4000/persianDate').then((res) => {
+                setPersianDate(res.data)
+            })
+        }
+        getPersianDate()
+
         if(params) {
             getAdmin()
         }
@@ -24,8 +33,7 @@ const ShowAdmin = () => {
         })
     }
 
-    const sendAdmin = async (event) => {
-        event.preventDefault()
+    const updateAdmin = async () => {
         await axios.post('http://localhost:4000/adminPanel/admin/updateAdmin', {
             ...values
         }, 
@@ -46,20 +54,20 @@ const ShowAdmin = () => {
             <div className="col-10">
                 <div className="col-11 mx-5 counter">
                     <div className="titleCounter">
-                        <p>پیشخوان</p>
+                        <p>پیشخوان / ویرایش مدیر</p>
                     </div>
                     <div className="d-flex justify-content-start parsianDate">
-                        <p>djhdkhfkhdkhf</p>
+                        <p>{persianDate}</p>
                     </div>
                 </div>
                 <div className="addAdmin col-11 my-5 mx-5">
                     <div className="addtitle my-3 mx-2 col-8">
                         <img className="px-1 faField" src={"/uploads/icons/plus-square-black.svg"} alt="addAdmin" />
-                        افزودن مدیر
+                        ویرایش مدیر
                     </div>
                     
                     <div className="addBody col-9 mx-3">
-                        <form onSubmit={(event) => sendAdmin(event)}> 
+                        <form onSubmit={(event) => updateAdmin(event)}> 
                             <div className="row g-2" >
                                 <div className="mx-4 col-5">  
                                     <input type="text" className="form-control mt-3 faField" value={values.firstName}  placeholder="نام" name="firstName" 

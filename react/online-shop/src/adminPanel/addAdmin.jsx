@@ -8,7 +8,8 @@ import { useNavigate } from "react-router-dom";
 import axios from 'axios'
 
 const AddAdmin = () => {
-    
+
+    const [persianDate, setPersianDate] = useState('')
     const navigate = useNavigate()
     const [ values, setValues ] = useState({
         firstName: "",
@@ -26,6 +27,16 @@ const AddAdmin = () => {
         isReport: false,
         isPayment: false,
     })
+
+    useEffect(() => {
+        const getPersianDate = async () => {
+            await axios.get('http://localhost:4000/persianDate').then((res) => {
+                setPersianDate(res.data)
+            })
+        }
+        getPersianDate()
+    }, [])
+
 
 
     const handleSubmit = async (event) => {
@@ -51,10 +62,10 @@ const AddAdmin = () => {
             <div className="col-10">
                 <div className="col-11 mx-5 counter">
                     <div className="titleCounter">
-                        <p>پیشخوان</p>
+                        <p> پیشخوان / افزودن مدیر </p>
                     </div>
                     <div className="d-flex justify-content-start parsianDate">
-                        <p>djhdkhfkhdkhf</p>
+                        <p>{persianDate}</p>
                     </div>
                 </div>
                 <div className="addAdmin col-11 my-5 mx-5">
