@@ -6,9 +6,10 @@ import ConfirmSmsForm from "./authentication/confirmSmsForm";
 import Login from "./authentication/login";
 import { Route, Routes } from "react-router-dom";
 import AdminCounter from "./adminPanel/counter";
-import AddAdmin from "./adminPanel/addAdmin";
-import AllAdmins from "./adminPanel/allAdmins";
-import ShowAdmin from "./adminPanel/showAdmin";
+import AddAdmin from "./adminPanel/admin/addAdmin";
+import AllAdmins from "./adminPanel/admin/allAdmins";
+import ShowAdmin from "./adminPanel/admin/showAdmin";
+import AddUser from "./adminPanel/user/addUser";
 
 const App = () => {
     return ( 
@@ -23,6 +24,7 @@ const App = () => {
                 <Route path="/admin/newAdmin" element={<AddAdmin />} />
                 <Route path="/admin/allAdmins" element={<AllAdmins />} />
                 <Route path="/admin/showAdmin/:id" element={<ShowAdmin />} />
+                <Route path="/admin/newUser" element={<AddUser />}/>
            </Routes>
         </>
     );
