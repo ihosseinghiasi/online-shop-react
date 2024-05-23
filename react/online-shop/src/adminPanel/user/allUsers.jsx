@@ -11,6 +11,9 @@ const AllUsers = () => {
 
     const [users, setUsers] = useState([])
     const [persianDate, setPersianDate] = useState('')
+    const [userId, setUserId] = useState('')
+    const navigate = useNavigate()
+
 
     useEffect(() => {
 
@@ -28,6 +31,16 @@ const AllUsers = () => {
         getAllAdmins()
         getPersianDate()
     }, [])
+
+    async function handleDelete(id) {
+            await axios.post('http://localhost:4000/adminPanel/user/deleteUser', {id}, {
+                withCredentials: true
+               }).then((res) => {
+                if(res.data.status) {
+
+                }
+               })        
+        }
 
     return ( 
         <>
@@ -66,7 +79,7 @@ const AllUsers = () => {
                                     <TableRow 
                                         index={index + 1} id={user._id} lastName={user.lastName} 
                                         email={user.email} 
-                                        // handleDelete={handleDelete}
+                                        handleDelete={handleDelete}
                 
                                       />
                                 ) ) }       

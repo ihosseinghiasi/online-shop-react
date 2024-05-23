@@ -14,7 +14,7 @@ const TableRow = ( { index, id, email, lastName, handleDelete } ) => {
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-4">
-                            <Link to={`/admin/showUser/${id}`} class="btn btn-success" role="button">
+                            <Link to={`/user/showUser/${id}`} class="btn btn-success" role="button">
                                  <img src={'/uploads/icons/edit.svg'} alt="edit" />   
                             </Link>   
                             </div>

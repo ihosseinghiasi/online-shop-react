@@ -63,3 +63,15 @@ module.exports.updateUser = async (req, res, next) => {
         next(err)
     }
 }
+
+module.exports.deleteUser = async (req, res, next) => {
+    try {
+        const {id} = req.body
+        const deleteUser = await User.findByIdAndDelete({ _id: id })
+        if(deleteUser) {
+            return res.json({ status: "ok" })
+        }
+    } catch (err) {
+        
+    }
+}
