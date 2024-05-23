@@ -46,7 +46,7 @@ module.exports.showAdmin = async (req, res, next) => {
         const admin = await Admin.findOne({ _id: paramId })
         res.send({ admin })
     } catch (err) {
-        
+        next(err)
     }
 }
 

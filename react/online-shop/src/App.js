@@ -11,6 +11,7 @@ import AllAdmins from "./adminPanel/admin/allAdmins";
 import ShowAdmin from "./adminPanel/admin/showAdmin";
 import AddUser from "./adminPanel/user/addUser";
 import AllUsers from "./adminPanel/user/allUsers";
+import ShowUser from "./adminPanel/user/showUser";
 
 const App = () => {
     return ( 
@@ -27,6 +28,7 @@ const App = () => {
                 <Route path="/admin/showAdmin/:id" element={<ShowAdmin />} />
                 <Route path="/admin/newUser" element={<AddUser />}/>
                 <Route path="/admin/allUsers" element={<AllUsers />}/>
+                <Route path="/admin/showUser/:id" element={<ShowUser />} />
            </Routes>
         </>
     );
