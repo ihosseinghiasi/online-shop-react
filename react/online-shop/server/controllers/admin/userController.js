@@ -18,3 +18,14 @@ module.exports.addUser = async (req, res, next) => {
         next(err)
     }
 }
+
+module.exports.allUsers = async (req, res, next) => {
+    try {
+
+        const users = await User.find({})
+        return res.json({users})
+
+    } catch (err) {
+        next(err)
+    }
+}
