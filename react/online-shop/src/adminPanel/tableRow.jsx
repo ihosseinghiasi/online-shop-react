@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import "../public/css/admin/admin.css"
 import "../public/css/admin/general.css"
+import axios from "axios"; 
 
-const TableRow = ( { index, id, email, lastName, department } ) => {   
+const TableRow = ( { index, id, email, lastName, department, handleDelete } ) => {  
 
     return ( 
         <>
@@ -20,12 +21,11 @@ const TableRow = ( { index, id, email, lastName, department } ) => {
                             </Link>   
                             </div>
                             <div class="col-4">
-                            <form action="/admin-cPanel/admin/showAdmins/<%= admin.id %>
-                                ?_method=DELETE" method="POST">
-                                <button type="submit" class="btn btn-danger">
+                            {/* <form > */}
+                                <button onClick={() => handleDelete(id)} type="button" class="btn btn-danger">
                                     <img src={'/uploads/icons/trash-2.svg'} alt="remove" />
                                 </button>
-                            </form>
+                            {/* </form> */}
                         </div>
                         </div>
                         </div>

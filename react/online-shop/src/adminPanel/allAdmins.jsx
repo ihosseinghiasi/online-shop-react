@@ -2,12 +2,15 @@ import { useEffect, useState } from "react";
 import "../public/css/admin/admin.css"
 import "../public/css/admin/general.css"
 import AdminNavbar from "./adminNavbar";
+import axios from "axios";
 import RightMenu from "./rightMenu";
-import axios from "axios"
 import TableRow from "./tableRow";
+import { useNavigate } from "react-router-dom";
 
 const AllAdmins = () => {
     const [ admins, setAdmins ] = useState([])
+    const [adminId, setAdminId] = useState("")
+    const navigate = useNavigate()
     useEffect(() => {
             const getAllAdmins = () => {
                 axios.get('http://localhost:4000/adminPanel/admin/allAdmins').then((res => {
@@ -16,6 +19,25 @@ const AllAdmins = () => {
             }
             getAllAdmins()
     }, [])
+
+    useEffect(() => {
+        async function sendAdminId() {
+            await axios.post('http://localhost:4000/adminPanel/admin/deleteAdmin', {adminId}, {
+                withCredentials: true
+               }).then((res) => {
+                if(res.data.status) {
+                    
+                }
+               })        
+        }
+        sendAdminId()
+    }, [adminId])
+
+    async function handleDelete(id) {
+        console.log(id)
+        setAdminId(id)
+    }
+
     return ( 
         <>
             <AdminNavbar />
@@ -51,9 +73,11 @@ const AllAdmins = () => {
                                 <tbody>
                                 { admins.map((admin, index) => (
                                     <TableRow 
-                                        index={index + 1 } id={admin._id} lastName={admin.lastName} 
-                                        email={admin.email} department={admin.department}
-                                    />
+                                        index={index + 1} id={admin._id} lastName={admin.lastName} 
+                                        email={admin.email} department={admin.department} 
+                                        handleDelete={handleDelete}
+                
+                                      />
                                 ) ) }       
                                 </tbody>
                               </table>

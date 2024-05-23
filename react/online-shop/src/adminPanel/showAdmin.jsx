@@ -5,11 +5,12 @@ import RightMenu from "./rightMenu";
 import AdminNavbar from "./adminNavbar";
 import { React, useEffect, useState } from "react";
 import axios from 'axios'
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 const ShowAdmin = () => {
 
     let [ values, setValues ] = useState({})
     const params = useParams()
+    const navigate = useNavigate()
     
     useEffect(() => {
         if(params) {
@@ -23,13 +24,16 @@ const ShowAdmin = () => {
         })
     }
 
-    console.log(values)
-
-    const sendAdmin = async () => {
-        
+    const sendAdmin = async (event) => {
+        event.preventDefault()
         await axios.post('http://localhost:4000/adminPanel/admin/updateAdmin', {
             ...values
-        }, {withCredentials: true})
+        }, 
+        {withCredentials: true}).then((res) => {
+            if(res.data.status) {
+                navigate('/admin/allAdmins')
+            }
+        })
     }
 
     return ( 
@@ -55,7 +59,7 @@ const ShowAdmin = () => {
                     </div>
                     
                     <div className="addBody col-9 mx-3">
-                        <form onSubmit={sendAdmin}> 
+                        <form onSubmit={(event) => sendAdmin(event)}> 
                             <div className="row g-2" >
                                 <div className="mx-4 col-5">  
                                     <input type="text" className="form-control mt-3 faField" value={values.firstName}  placeholder="نام" name="firstName" 

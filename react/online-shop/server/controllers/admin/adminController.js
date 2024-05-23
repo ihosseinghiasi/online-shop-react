@@ -21,9 +21,13 @@ module.exports.newAdmin = async (req, res, next) => {
 
             const salt = await bcript.genSalt()
             data.password = await bcript.hash(data.password, salt)
-            await Admin.create(data)
+            const newAdmin = await Admin.create(data)
+            if(newAdmin) {
+                return res.json({status: "Created"})
+            }
+            
         } catch (err) {
-        
+        next(err)
     }
 }
 
@@ -66,7 +70,23 @@ module.exports.updateAdmin = async (req, res, next) => {
 
         const salt = await bcript.genSalt()
         data.password = await bcript.hash(data.password, salt)
-        await Admin.updateOne({ _id: _id }, { $set: data })
+        const updatedAdmin = await Admin.updateOne({ _id: _id }, { $set: data })
+        if(updatedAdmin.acknowledged) {
+            return res.json({ status: "ok" })
+        }
+    } catch (err) {
+        next(err)
+    }
+}
+
+module.exports.deleteAdmin = async (req, res, next) => {
+    try {
+        const {adminId} = req.body
+        const deleteAdmin = await Admin.findByIdAndDelete({ _id: adminId })
+        console.log(deleteAdmin)
+        if(deleteAdmin) {
+            return res.json({ status: "ok" })
+        }
     } catch (err) {
         
     }

@@ -30,12 +30,15 @@ const AddAdmin = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault()
-        navigate('/admin/allAdmins')
         await axios.post('http://localhost:4000/adminPanel/admin/newAdmin', {
             ...values
         }
         ,{
             withCredentials: true
+        }).then((res)=> {
+            if(res.data.status) {
+                navigate('/admin/allAdmins')
+            }
         })
     }
 
