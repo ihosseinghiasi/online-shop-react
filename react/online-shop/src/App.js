@@ -12,23 +12,27 @@ import ShowAdmin from "./adminPanel/admin/showAdmin";
 import AddUser from "./adminPanel/user/addUser";
 import AllUsers from "./adminPanel/user/allUsers";
 import ShowUser from "./adminPanel/user/showUser";
+import AddCategory from "./adminPanel/category/addCategory";
+import Dashboard from "./authentication/dashboard";
 
 const App = () => {
     return ( 
         <>
            <Routes>
                 <Route path="/" element={<Home />}/>
+                <Route path="/dashboard" element={<Dashboard />}/>
                 <Route path="/register" element={<Register />}/>
                 <Route path="/smsForm" element={<SmsForm />}/>
                 <Route path="/confirmSmsForm" element={<ConfirmSmsForm />}/>
                 <Route path="/login" element={<Login />} />
                 <Route path="/admin/Counter" element={<AdminCounter />} />
                 <Route path="/admin/newAdmin" element={<AddAdmin />} />
-                <Route path="/admin/allAdmins" element={<AllAdmins />} />
-                <Route path="/admin/showAdmin/:id" element={<ShowAdmin />} />
+                <Route path="/admin/allAdmins" element={<AllAdmins />}/>
+                <Route path="/admin/showAdmin/:id" element={<ShowAdmin />}/>
                 <Route path="/admin/newUser" element={<AddUser />}/>
                 <Route path="/admin/allUsers" element={<AllUsers />}/>
-                <Route path="/admin/showUser/:id" element={<ShowUser />} />
+                <Route path="/admin/showUser/:id" element={<ShowUser />}/>
+                <Route path="/admin/newCategory" element={<AddCategory />}/>
            </Routes>
         </>
     );

@@ -2,7 +2,7 @@ const { verifyCodeSms, confirmVerifyCodeSms, login, register } = require('../../
 const {checkUser} = require('../../../middlewares/checkUserAuthenticate')
 const router = require('express').Router()
 
-router.post('/', checkUser)
+router.get('/dashboard', checkUser)
 router.post('/sms', verifyCodeSms)
 router.post('/confirmSms', confirmVerifyCodeSms)
 router.post('/login', login)

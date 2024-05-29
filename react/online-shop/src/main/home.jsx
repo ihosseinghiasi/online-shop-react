@@ -1,43 +1,13 @@
-import { useEffect, useState } from "react";
-import { useCookies } from "react-cookie";
 // import { ToastContainer, toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import "../public/css/shop/mainPage.css";
 import mainImage from "../public/pictures/shopping01.jpg";
 import Navbar from "./navbar";
 import Footer from "./footer";
-import Dashboard from "../authentication/dashboard";
 
-const Home = () => {  
-
-  const [cookies, setCookies, removeCookie] = useCookies([])
-  const [isAuthenticated, setAuthenticated] = useState(false)
-  const [fullName, setFullName] = useState("")
-  const navigate = useNavigate()
-
-  useEffect(() => {
-
-    const verifyUser = async () => {
-      if(!cookies.comercial) {
-          // navigate('/login')
-      } else {
-          const {data} = await axios.post('http://localhost:4000',
-          {},
-          { withCredentials: true }
-          )
-          if(data.status) {
-            setAuthenticated(true)
-            setFullName(data.user)
-          } 
-        }
-      }
-      verifyUser()
-}, [cookies, navigate])
-
+const Home = () => {
   return (
     <>
-    { isAuthenticated ? ( <Dashboard  fullName = {fullName} /> ) : ( <Navbar /> ) }
+      <Navbar />
       <div className="container-flud">
         <div className="main">
           <img src={mainImage} className="mainImage" alt="mainImage" />
@@ -69,7 +39,6 @@ const Home = () => {
           </div>
         </div>
         <p className="pCategories">انتخاب دسته بندی</p>
-        
       </div>
 
       <footer>
