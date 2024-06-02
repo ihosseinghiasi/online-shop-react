@@ -21,10 +21,9 @@
 }
 
 .imageUpload {
-    height: 140px;
-    width: 200px;
-    background: url("../../pictures/unimage.png") no-repeat;
-    background-size: cover;
+    height: 160px;
+    width: 210px;
+    margin: 0 35px 0 0;
     border-top-left-radius: 7px;
     border-top-right-radius: 7px;
 }
@@ -37,7 +36,7 @@
 }
 
 .btnSubmit {
-    margin-right: 26%;
+    margin-right: 30%;
 }
 
 .fileUloadArea {
