@@ -8,10 +8,8 @@ import "../../public/css/admin/general.css";
 import defaultImage from "../../public/pictures/unimage.png";
 
 const AddCategory = () => {
-  const [namak, setNamak] = useState("");
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [categoryImage, setCategoryImage] = useState(defaultImage);
+  const [category, setCategory] = useState({});
+  const [categoryImage, setCategoryImage] = useState();
   const [UrlCategoryImage, setUrlCategoryImage] = useState(defaultImage);
   const [persianDate, setPersianDate] = useState("");
   const fileUploadRef = useRef(null);
@@ -39,12 +37,11 @@ const AddCategory = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-
     const formData = new FormData();
     formData.append("file", categoryImage);
-    formData.append("namak", namak);
-    formData.append("title", title);
-    formData.append("description", description);
+    formData.append("categoryName", category.categoryName);
+    formData.append("title", category.title);
+    formData.append("description", category.description);
 
     await axios
       .post("http://localhost:4000/adminPanel/category/addCategory", formData, {
@@ -73,8 +70,10 @@ const AddCategory = () => {
 
             <div className="addAdmin col-11 my-5 mx-5">
               <div className="addtitle my-3 mx-2 col-8">
-                {/* <img src="/icons/plus-square-black.svg"  alt="افزودن دسته بندی "> */}
-                <img src={"/uploads/icons/plus-square-black.svg"} alt="" />
+                <img
+                  src={"/uploads/icons/plus-square-black.svg"}
+                  alt="categoryPicture"
+                />
                 افزودن دسته بندی
               </div>
 
@@ -92,13 +91,19 @@ const AddCategory = () => {
                         id="categoryName"
                         className="form-control mt-3 enField"
                         placeholder="نامک دسته بندی"
-                        onChange={(e) => setNamak(e.target.value)}
+                        onChange={(e) =>
+                          setCategory({
+                            ...category,
+                            [e.target.name]: e.target.value,
+                          })
+                        }
                       />
                       <span
                         className="badge bg-secondary nemeAddressBadge"
                         id="namak"
                       >
-                        http://localhost/admin-cPanel/category/{namak}
+                        http://localhost/admin-cPanel/category/
+                        {category.categoryName}
                       </span>
                       <p className="mt-5 text-secondary">
                         از نامک دسته بندی برای ساخت آدرس صفحه دسته بندی استفاده
@@ -118,7 +123,7 @@ const AddCategory = () => {
 
                       <input
                         type="file"
-                        name="image"
+                        name="file"
                         id="file"
                         ref={fileUploadRef}
                         className="form-control"
@@ -139,7 +144,12 @@ const AddCategory = () => {
                         className="form-control faField"
                         id="categoryTitle"
                         placeholder="عنوان دسته بندی"
-                        onChange={(e) => setTitle(e.target.value)}
+                        onChange={(e) =>
+                          setCategory({
+                            ...category,
+                            [e.target.name]: e.target.value,
+                          })
+                        }
                       />
                       <div className="form-group mt-3">
                         <textarea
@@ -148,7 +158,12 @@ const AddCategory = () => {
                           className="form-control"
                           cols="30"
                           rows="10"
-                          onChange={(e) => setDescription(e.target.value)}
+                          onChange={(e) =>
+                            setCategory({
+                              ...category,
+                              [e.target.name]: e.target.value,
+                            })
+                          }
                         ></textarea>
                       </div>
                     </div>
