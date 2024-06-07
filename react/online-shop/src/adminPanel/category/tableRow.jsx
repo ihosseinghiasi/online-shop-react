@@ -23,13 +23,11 @@ const TableRow = ({ index, id, namak, title, handleDelete }) => {
                 </Link>
               </div>
               <div class="col-4">
-                <button
-                  onClick={() => handleDelete(id)}
-                  type="button"
-                  class="btn btn-danger"
-                >
-                  <img src={"/uploads/icons/trash-2.svg"} alt="remove" />
-                </button>
+                <form onSubmit={() => handleDelete(id)}>
+                  <button type="submit" class="btn btn-danger">
+                    <img src={"/uploads/icons/trash-2.svg"} alt="remove" />
+                  </button>
+                </form>
               </div>
             </div>
           </div>

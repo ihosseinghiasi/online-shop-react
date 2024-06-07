@@ -14,5 +14,6 @@ router.post('/addCategory', upload.single('file'), (req, res, next) => {
 router.get('/allCategories', categoryController.allCategories)
 router.post('/showCategory', categoryController.showCategory)
 router.post('/updateCategory', upload.single('file'), categoryController.updateCategory)
+router.post('/deleteCategory', categoryController.deleteCategory)
 
 module.exports = router

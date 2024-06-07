@@ -10,8 +10,6 @@ import { useNavigate } from "react-router-dom";
 const AllCategories = () => {
   const [categories, setCategories] = useState([]);
   const [persianDate, setPersianDate] = useState("");
-  const [categoryId, setCategoryId] = useState("");
-  const navigate = useNavigate();
 
   useEffect(() => {
     const getAllCategories = () => {
@@ -42,6 +40,7 @@ const AllCategories = () => {
       )
       .then((res) => {
         if (res.data.status) {
+          console.log(res.data);
         }
       });
   }

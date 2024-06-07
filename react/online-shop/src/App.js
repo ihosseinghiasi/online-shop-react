@@ -16,7 +16,7 @@ import AddCategory from "./adminPanel/category/addCategory";
 import Dashboard from "./authentication/dashboard";
 import ShowCategory from "./adminPanel/category/showCategory"
 import AllCategories from "./adminPanel/category/allCategories";
-
+    
 const App = () => {
     return ( 
         <>

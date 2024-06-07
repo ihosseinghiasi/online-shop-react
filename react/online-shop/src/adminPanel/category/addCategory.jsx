@@ -13,6 +13,7 @@ const AddCategory = () => {
   const [UrlCategoryImage, setUrlCategoryImage] = useState(defaultImage);
   const [persianDate, setPersianDate] = useState("");
   const fileUploadRef = useRef(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getPersianDate = async () => {
@@ -48,6 +49,7 @@ const AddCategory = () => {
         headers: { "Content-Type": "multipart/form-data" },
       })
       .then((res) => {
+        navigate("/admin/allCategories");
         console.log(res.data.status);
       });
   };

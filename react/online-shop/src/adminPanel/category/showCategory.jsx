@@ -42,9 +42,7 @@ const ShowCategory = () => {
     setUrlCategoryImage(URL.createObjectURL(uploadedFile));
   };
 
-  const submitHandler = async (e) => {
-    e.preventDefault();
-
+  const submitHandler = async () => {
     const formData = new FormData();
     if (categoryImage) formData.append("file", categoryImage);
     formData.append("id", category._id);

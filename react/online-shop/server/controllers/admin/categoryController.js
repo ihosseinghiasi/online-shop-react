@@ -65,3 +65,13 @@ module.exports.updateCategory = async (req, res, next) => {
   }
 }
 
+module.exports.deleteCategory = async (req, res, next) => {
+  try {
+    const id = req.body.id
+    console.log('sdidsuydouosudou')
+    const deletedCategory = await Category.deleteOne({ _id: id })
+    if (deletedCategory) res.json({ status: "Ok" })  
+  } catch (err) {
+    next(err)
+  }
+}
