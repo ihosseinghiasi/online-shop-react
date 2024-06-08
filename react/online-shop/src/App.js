@@ -16,7 +16,8 @@ import AddCategory from "./adminPanel/category/addCategory";
 import Dashboard from "./authentication/dashboard";
 import ShowCategory from "./adminPanel/category/showCategory"
 import AllCategories from "./adminPanel/category/allCategories";
-    
+import AddProduct from "./adminPanel/product/addProduct";
+
 const App = () => {
     return ( 
         <>
@@ -37,6 +38,7 @@ const App = () => {
                 <Route path="/admin/newCategory" element={<AddCategory />}/>
                 <Route path="/admin/allCategories" element={<AllCategories />} />
                 <Route path="/admin/showCategory/:id" element={<ShowCategory />} />
+                <Route path="/admin/newProduct" element={<AddProduct />} />
            </Routes>
         </>
     );

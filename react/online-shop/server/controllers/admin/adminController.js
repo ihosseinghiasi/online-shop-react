@@ -23,7 +23,7 @@ module.exports.newAdmin = async (req, res, next) => {
             data.password = await bcript.hash(data.password, salt)
             const newAdmin = await Admin.create(data)
             if(newAdmin) {
-                return res.json({status: "Created"})
+                return res.json({status: "OK"})
             }
             
         } catch (err) {
@@ -72,7 +72,7 @@ module.exports.updateAdmin = async (req, res, next) => {
         data.password = await bcript.hash(data.password, salt)
         const updatedAdmin = await Admin.updateOne({ _id: _id }, { $set: data })
         if(updatedAdmin.acknowledged) {
-            return res.json({ status: "ok" })
+            return res.json({ status: "OK" })
         }
     } catch (err) {
         next(err)
@@ -85,7 +85,7 @@ module.exports.deleteAdmin = async (req, res, next) => {
         const deleteAdmin = await Admin.findByIdAndDelete({ _id: adminId })
         console.log(deleteAdmin)
         if(deleteAdmin) {
-            return res.json({ status: "ok" })
+            return res.json({ status: "OK" })
         }
     } catch (err) {
         

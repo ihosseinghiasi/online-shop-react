@@ -15,7 +15,7 @@ module.exports.addUser = async (req, res, next) => {
         data.password = await bcrypt.hash(data.password, salt)
         const user = await User.create(data)
         if (user) {
-            return res.json({status: "ok"})
+            return res.json({status: "OK"})
         }
     } catch (err) {
         next(err)
@@ -57,7 +57,7 @@ module.exports.updateUser = async (req, res, next) => {
         data.password = await bcrypt.hash(data.password, salt)
         const updatedUser = await User.updateOne({ _id: _id }, { $set: data })
         if(updatedUser.acknowledged) {
-            return res.json({ status: "ok" })
+            return res.json({ status: "OK" })
         }
     } catch (err) {
         next(err)
@@ -69,7 +69,7 @@ module.exports.deleteUser = async (req, res, next) => {
         const {id} = req.body
         const deleteUser = await User.findByIdAndDelete({ _id: id })
         if(deleteUser) {
-            return res.json({ status: "ok" })
+            return res.json({ status: "OK" })
         }
     } catch (err) {
         

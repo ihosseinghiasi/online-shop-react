@@ -1,4 +1,3 @@
-const { json } = require('react-router-dom')
 const Category = require('../../models/category')
 
 module.exports.newCategory = async (req, res, next) => {
@@ -14,7 +13,7 @@ module.exports.newCategory = async (req, res, next) => {
       }
       const newCategory = await Category.create(data)
       if(newCategory) {
-        res.json({ status: "ok" })
+        res.json({ status: "OK" })
       }
     } catch (err) {
       next(err)
@@ -68,7 +67,6 @@ module.exports.updateCategory = async (req, res, next) => {
 module.exports.deleteCategory = async (req, res, next) => {
   try {
     const id = req.body.id
-    console.log('sdidsuydouosudou')
     const deletedCategory = await Category.deleteOne({ _id: id })
     if (deletedCategory) res.json({ status: "Ok" })  
   } catch (err) {

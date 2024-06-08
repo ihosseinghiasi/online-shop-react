@@ -29,11 +29,10 @@ const AddCategory = () => {
     fileUploadRef.current.click();
   };
 
-  const uploadImageDisplay = async () => {
+  const uploadImageDisplay = () => {
     const uploadedFile = fileUploadRef.current.files[0];
     setCategoryImage(uploadedFile);
-    const cachedUrl = URL.createObjectURL(uploadedFile);
-    setUrlCategoryImage(cachedUrl);
+    setUrlCategoryImage(URL.createObjectURL(uploadedFile));
   };
 
   const submitHandler = async (e) => {
@@ -104,7 +103,7 @@ const AddCategory = () => {
                         className="badge bg-secondary nemeAddressBadge"
                         id="namak"
                       >
-                        http://localhost/admin-cPanel/category/
+                        http://localhost/adminPanel/category/
                         {category.categoryName}
                       </span>
                       <p className="mt-5 text-secondary">
