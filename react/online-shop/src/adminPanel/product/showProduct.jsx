@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import "../../public/css/admin/general.css";
 import "../../public/css/admin/product.css";
@@ -8,14 +8,15 @@ import AdminNavbar from "../adminNavbar";
 import defaultImage from "../../public/pictures/unimage.png";
 import { wordifyfa } from "../../public/wordifyfa/src/wordifyfa.ts";
 
-const AddProduct = () => {
+const ShowProduct = () => {
   const [product, setProduct] = useState({});
   const [fields, setFields] = useState([""]);
   const [categories, setCategories] = useState([]);
   const [productImage, setProductImage] = useState();
-  const [UrlProductImage, setUrlProductImage] = useState(defaultImage);
+  const [UrlProductImage, setUrlProductImage] = useState();
   const [persianDate, setPersianDate] = useState("");
   const fileUploadRef = useRef(null);
+  const params = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -35,7 +36,24 @@ const AddProduct = () => {
 
     getCategories();
     getPersianDate();
+
+    const getProduct = async () => {
+      await axios
+        .post("http://localhost:4000/adminPanel/product/showProduct", params)
+        .then((response) => {
+          setProduct(response.data.product);
+          setFields(response.data.product.fields);
+        });
+    };
+
+    if (params) getProduct();
   }, []);
+
+  useEffect(() => {
+    console.log(product);
+    console.log(productImage);
+    console.log(fields);
+  });
 
   const handleImageUpload = (e) => {
     e.preventDefault();
@@ -67,11 +85,12 @@ const AddProduct = () => {
     } else setFields([""]);
   };
 
-  const addProduct = async (e) => {
+  const editProduct = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("file", productImage);
+    if (productImage) formData.append("file", productImage);
     formData.append("productName", product.productName);
+    formData.append("id", product._id);
     formData.append("title", product.title);
     formData.append("cycle", product.cycle);
     formData.append("price", product.price);
@@ -81,12 +100,15 @@ const AddProduct = () => {
     formData.append("fields", fields);
 
     await axios
-      .post("http://localhost:4000/adminPanel/product/addProduct", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      })
+      .post(
+        "http://localhost:4000/adminPanel/product/updateProduct",
+        formData,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      )
       .then((res) => {
         console.log(res.data.status);
-        navigate("/admin/allProducts");
       });
   };
 
@@ -99,7 +121,7 @@ const AddProduct = () => {
           <div className="col-10">
             <div className="col-11 mx-5 counter">
               <div className="titleCounter">
-                <p>پیشخوان / محصولات / افزودن محصول </p>
+                <p>پیشخوان / محصولات / ویرایش محصول </p>
               </div>
               <div className="d-flex justify-content-start parsianDate">
                 <p>{persianDate}</p>
@@ -112,12 +134,12 @@ const AddProduct = () => {
                   src={"/uploads/icons/plus-square-black.svg"}
                   alt="addProduct"
                 />
-                افزودن محصول
+                ویرایش محصول
               </div>
 
               <div className="addBody col-8 mx-5">
                 <form
-                  onSubmit={(e) => addProduct(e)}
+                  onSubmit={(e) => editProduct(e)}
                   encType="multipart/form-data"
                 >
                   <div className="row">
@@ -126,6 +148,7 @@ const AddProduct = () => {
                         type="text"
                         name="productName"
                         id="productName"
+                        value={product.productName}
                         list="productNameList"
                         className="form-control mt-3 list enField"
                         placeholder="نامک محصول"
@@ -153,12 +176,26 @@ const AddProduct = () => {
 
                     <div className="col-4 fileUloadArea">
                       <div className="imageUpload mx-auto" id="file">
-                        <img
-                          src={UrlProductImage}
-                          alt="categoryImage"
-                          className="imageUpload rounded-full"
-                          onClick={handleImageUpload}
-                        />
+                        {product.image &&
+                          (UrlProductImage ? (
+                            <img
+                              src={UrlProductImage}
+                              name="newCategoryImage"
+                              id="newCategoryImage"
+                              alt="categoryImage"
+                              className="imageUpload rounded-full"
+                              onClick={handleImageUpload}
+                            />
+                          ) : (
+                            <img
+                              src={require(`../../images/category/${product.image}`)}
+                              name="categoryImage"
+                              id="categoryImage"
+                              alt="categoryImage"
+                              className="imageUpload rounded-full"
+                              onClick={handleImageUpload}
+                            />
+                          ))}
                       </div>
                       <input
                         type="file"
@@ -183,6 +220,7 @@ const AddProduct = () => {
                         name="title"
                         className="form-control"
                         id="categoryTitle"
+                        value={product.title}
                         placeholder="عنوان محصول"
                         onChange={(e) =>
                           setProduct({
@@ -195,6 +233,7 @@ const AddProduct = () => {
                         <textarea
                           name="description"
                           id="editor"
+                          value={product.description}
                           className="form-control"
                           cols="30"
                           rows="10"
@@ -215,6 +254,7 @@ const AddProduct = () => {
                         <select
                           id="selectCategory"
                           name="categoryTitle"
+                          value={product.categoryTitle}
                           className="selectCategory me-2 form-select"
                           onChange={(e) =>
                             setProduct({
@@ -241,6 +281,7 @@ const AddProduct = () => {
                           type="text"
                           className="me-2 form-control textPrice w-75 faField"
                           name="price"
+                          value={product.price}
                           id="productPrice"
                           onChange={(e) =>
                             setProduct({
@@ -276,6 +317,7 @@ const AddProduct = () => {
                           type="text"
                           className="me-5 form-control textPrice w-75"
                           name="cycle" // cycle of expire
+                          value={product.cycle}
                           id="cycle"
                           onChange={(e) =>
                             setProduct({
@@ -300,6 +342,7 @@ const AddProduct = () => {
                             style={{ width: "60px", height: "30px" }}
                             type="checkbox"
                             id="mySwitch"
+                            checked={product.accessible}
                             name="accessible"
                             onChange={(e) =>
                               setProduct({
@@ -423,4 +466,4 @@ const AddProduct = () => {
   );
 };
 
-export default AddProduct;
+export default ShowProduct;
