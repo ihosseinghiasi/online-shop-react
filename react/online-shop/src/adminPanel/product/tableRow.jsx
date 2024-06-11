@@ -6,7 +6,7 @@ const TableRow = ({ index, id, namak, title, handleDelete }) => {
   return (
     <>
       <tr>
-        <td className="faField"> {++index} </td>
+        <td className="faField"> {index} </td>
         <td className="faField"> {namak} </td>
         <td className="enField"> {title} </td>
         <td className="faField"> </td>

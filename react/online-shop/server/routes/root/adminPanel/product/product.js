@@ -14,6 +14,6 @@ router.post('/addProduct', upload.single('file'), (req, res, next) => {
 router.get('/allProducts', productController.allProducts)
 router.post('/showProduct', productController.showProduct)
 router.post('/updateProduct', upload.single('file'), productController.updateProduct)
-
+router.post('/deleteProduct', productController.deleteProduct)
 
 module.exports = router

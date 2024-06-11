@@ -68,3 +68,13 @@ module.exports.updateProduct = async (req, res, next) => {
     next(err)
   }
 }
+
+module.exports.deleteProduct = async (req, res, next) => {
+  try {
+    const id = req.body.id
+    const deletedProduct = await Product.deleteOne({ _id: id })
+    if (deletedProduct) res.json({ status: "Ok" })  
+  } catch (err) {
+    next(err)
+  }
+}

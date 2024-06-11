@@ -91,7 +91,7 @@ const AllProducts = () => {
                   <tbody>
                     {products.map((product, index) => (
                       <TableRow
-                        index={index++}
+                        index={++index}
                         id={product._id}
                         namak={product.productName}
                         title={product.title}
