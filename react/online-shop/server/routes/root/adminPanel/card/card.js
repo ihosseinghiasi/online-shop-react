@@ -3,5 +3,6 @@ const cardController = require('../../../../controllers/admin/cardController')
 
 router.get('/getCategoriesAndProducts', cardController.getCategoriesAndProducts)
 router.post('/addCard', cardController.addCard)
+router.get('/allCards', cardController.allCards)
 
 module.exports = router

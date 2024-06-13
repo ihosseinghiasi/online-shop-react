@@ -20,6 +20,7 @@ import AddProduct from "./adminPanel/product/addProduct";
 import AllProducts from "./adminPanel/product/allProducts";
 import ShowProduct from "./adminPanel/product/showProduct";
 import AddCard from "./adminPanel/card/addCard";
+import AllCards from "./adminPanel/card/allCards";
 
 const App = () => {
     return ( 
@@ -45,6 +46,7 @@ const App = () => {
                 <Route path="/admin/allProducts" element={<AllProducts />} />
                 <Route path="/admin/showProduct/:id" element={<ShowProduct />} />
                 <Route path="/admin/newCard" element={<AddCard />} />
+                <Route path="/admin/allCards" element={<AllCards />} />
 
            </Routes>
         </>

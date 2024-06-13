@@ -43,3 +43,12 @@ module.exports.addCard = async (req, res, next) => {
     next(err)
   }
 }
+
+module.exports.allCards = async (req, res, next) => {
+  try {
+    const cards = await Card.find({})
+    if (cards) { res.json({ cards })}
+  } catch (err) {
+    next(err)
+  }
+}
