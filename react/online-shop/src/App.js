@@ -19,6 +19,7 @@ import AllCategories from "./adminPanel/category/allCategories";
 import AddProduct from "./adminPanel/product/addProduct";
 import AllProducts from "./adminPanel/product/allProducts";
 import ShowProduct from "./adminPanel/product/showProduct";
+import AddCard from "./adminPanel/card/addCard";
 
 const App = () => {
     return ( 
@@ -43,6 +44,8 @@ const App = () => {
                 <Route path="/admin/newProduct" element={<AddProduct />} />
                 <Route path="/admin/allProducts" element={<AllProducts />} />
                 <Route path="/admin/showProduct/:id" element={<ShowProduct />} />
+                <Route path="/admin/newCard" element={<AddCard />} />
+
            </Routes>
         </>
     );
