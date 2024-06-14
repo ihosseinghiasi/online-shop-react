@@ -22,7 +22,7 @@ const TableRow = ({
             <div class="row justify-content-center">
               <div class="col-4">
                 <Link
-                  to={`/admin/showProduct/${id}`}
+                  to={`/admin/showCard/${id}`}
                   class="btn btn-success"
                   role="button"
                 >

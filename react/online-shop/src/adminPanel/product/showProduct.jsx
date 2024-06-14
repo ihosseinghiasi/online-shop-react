@@ -51,9 +51,7 @@ const ShowProduct = () => {
 
   useEffect(() => {
     console.log(product);
-    console.log(productImage);
-    console.log(fields);
-  });
+  }, [product]);
 
   const handleImageUpload = (e) => {
     e.preventDefault();

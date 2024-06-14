@@ -21,6 +21,7 @@ import AllProducts from "./adminPanel/product/allProducts";
 import ShowProduct from "./adminPanel/product/showProduct";
 import AddCard from "./adminPanel/card/addCard";
 import AllCards from "./adminPanel/card/allCards";
+import ShowCard from "./adminPanel/card/showCard";
 
 const App = () => {
     return ( 
@@ -47,6 +48,8 @@ const App = () => {
                 <Route path="/admin/showProduct/:id" element={<ShowProduct />} />
                 <Route path="/admin/newCard" element={<AddCard />} />
                 <Route path="/admin/allCards" element={<AllCards />} />
+                <Route path="/admin/showCard/:id" element={<ShowCard />} />
+
 
            </Routes>
         </>

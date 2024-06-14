@@ -33,7 +33,6 @@ module.exports.addCard = async (req, res, next) => {
         cardStatus: card.cardStatus,
         cardFields: fields
       }
-
     const newCard = await Card.create(data)
     if (newCard) {
       res.json({status: "Ok"})
@@ -51,4 +50,10 @@ module.exports.allCards = async (req, res, next) => {
   } catch (err) {
     next(err)
   }
+}
+
+module.exports.showCard = async (req, res, next) => {
+  const id = req.body.id
+  const card = await Card.findById({ _id: id })
+  if (card) res.json({card})
 }
