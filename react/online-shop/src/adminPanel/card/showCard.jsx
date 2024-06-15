@@ -7,9 +7,47 @@ import RightMenu from "../rightMenu";
 import { useParams } from "react-router-dom";
 
 const ShowCard = () => {
+  const [categories, setCategories] = useState([]);
+  const [products, setProducts] = useState([]);
   const [card, setCard] = useState([]);
+  const [productCard, setProductCard] = useState([]);
+  const [fieldTitles, setFieldTitles] = useState([]);
+  const [fieldValues, setFieldValues] = useState([]);
   const [persianDate, setPersianDate] = useState("");
   const params = useParams();
+
+  useEffect(() => {
+    getProductsOfSelectedCategorie();
+  }, [card.categoryCard]);
+
+  useEffect(() => {
+    getfieldValuesOfProducts();
+  }, [card.productCard]);
+
+  const getProductsOfSelectedCategorie = () => {
+    products.map((product) => {
+      if (product.categoryTitle === card.cardCategory) {
+        setProductCard((productCard) => [...productCard, product.title]);
+      } else {
+        setProductCard([]);
+      }
+    });
+  };
+
+  const getfieldValuesOfProducts = () => {
+    setFieldTitles([]);
+    products.map((product) => {
+      if (product.title === card.productCard) {
+        setFieldTitles((fieldTitles) => [...fieldTitles, product.fields]);
+      }
+    });
+  };
+
+  const handleChangeField = (onChangeFields, index) => {
+    const newFields = [...fieldValues];
+    newFields[index] = onChangeFields;
+    setFieldValues(newFields);
+  };
 
   useEffect(() => {
     const getCard = () => {
@@ -20,14 +58,30 @@ const ShowCard = () => {
         });
     };
 
+    const getCategoriesAndProducts = async () => {
+      await axios
+        .get("http://localhost:4000/adminPanel/card/getCategoriesAndProducts")
+        .then((res) => {
+          setCategories(res.data.categories);
+          setProducts(res.data.products);
+        });
+    };
+
     const getPersianDate = async () => {
       await axios.get("http://localhost:4000/persianDate").then((res) => {
         setPersianDate(res.data);
       });
     };
     getCard();
+    getCategoriesAndProducts();
     getPersianDate();
   }, []);
+
+  useEffect(() => {
+    console.log(categories);
+    console.log(products);
+    console.log(card);
+  }, [categories, products]);
   return (
     <>
       <div className="container-fluid">
@@ -68,6 +122,7 @@ const ShowCard = () => {
                         className="form-select"
                         name="cardCategory"
                         id="cardCategory"
+                        value={card.cardCategory}
                         // onChange={(e) =>
                         //   setCard({
                         //     ...card,
@@ -75,10 +130,10 @@ const ShowCard = () => {
                         //   })
                         // }
                       >
-                        {card && <option> {card.cardCategory} </option>}
-                        {/* {categories.map((category, index) => (
-                            <option> {category.title} </option>
-                          ))} */}
+                        {/* {card && <option> {card.cardCategory} </option>} */}
+                        {categories.map((category, index) => (
+                          <option> {category.title} </option>
+                        ))}
                       </select>
                     </div>
                   </div>
@@ -102,10 +157,10 @@ const ShowCard = () => {
                         //   })
                         // }
                       >
-                        {card && <option> {card.cardProduct} </option>}
-                        {/* {productCard.map((product, index) => (
-                            <option> {product} </option>
-                          ))} */}
+                        {/* {card && <option> {card.cardProduct} </option>} */}
+                        {productCard.map((product, index) => (
+                          <option> {product} </option>
+                        ))}
                       </select>
                     </div>
                   </div>

@@ -16,20 +16,20 @@ module.exports.getCategoriesAndProducts = async (req, res, next) => {
 
 module.exports.addCard = async (req, res, next) => {
   try {
-    const { card, fieldTitles, fieldValues } = req.body
+    const { card, fieldNames, fieldValues } = req.body
     let fields = {}
    
-      if(fieldValues[0] !== "") {
+      if(fieldValues !== "") {
           fields = Object.fromEntries(
-            fieldTitles[0].map((fieldName, index) => [`field${[index]}`, 
+            fieldNames.map((fieldName, index) => [`field${[index]}`, 
                   {"fieldName": fieldName, "fieldValue": fieldValues[index]}
             ])
         )
       }
 
       const data = {
-        cardCategory: card.categoryCard,
-        cardProduct: card.productCard,
+        cardCategory: card.cardCategory,
+        cardProduct: card.cardProduct,
         cardStatus: card.cardStatus,
         cardFields: fields
       }
@@ -37,7 +37,7 @@ module.exports.addCard = async (req, res, next) => {
     if (newCard) {
       res.json({status: "Ok"})
     }  
-                        
+
   } catch (err) {
     next(err)
   }
