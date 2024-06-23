@@ -7,81 +7,155 @@ import RightMenu from "../rightMenu";
 import { useParams } from "react-router-dom";
 
 const ShowCard = () => {
+  const [firstLoad, setFirstLoad] = useState(false);
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
   const [card, setCard] = useState([]);
-  const [productCard, setProductCard] = useState([]);
-  const [fieldTitles, setFieldTitles] = useState([]);
+  const [cardProduct, setCardProduct] = useState([]);
+  const [fieldNames, setFieldNames] = useState([]);
   const [fieldValues, setFieldValues] = useState([]);
   const [persianDate, setPersianDate] = useState("");
+  const [firstProduct, setFirstProduct] = useState([]);
+
   const params = useParams();
 
-  useEffect(() => {
-    getProductsOfSelectedCategorie();
-  }, [card.categoryCard]);
-
-  useEffect(() => {
-    getfieldValuesOfProducts();
-  }, [card.productCard]);
-
-  const getProductsOfSelectedCategorie = () => {
-    products.map((product) => {
-      if (product.categoryTitle === card.cardCategory) {
-        setProductCard((productCard) => [...productCard, product.title]);
-      } else {
-        setProductCard([]);
-      }
-    });
-  };
-
-  const getfieldValuesOfProducts = () => {
-    setFieldTitles([]);
-    products.map((product) => {
-      if (product.title === card.productCard) {
-        setFieldTitles((fieldTitles) => [...fieldTitles, product.fields]);
-      }
-    });
-  };
-
-  const handleChangeField = (onChangeFields, index) => {
-    const newFields = [...fieldValues];
-    newFields[index] = onChangeFields;
-    setFieldValues(newFields);
-  };
-
-  useEffect(() => {
-    const getCard = () => {
-      axios
-        .post("http://localhost:4000/adminPanel/card/showCard", params)
-        .then((res) => {
-          setCard(res.data.card);
-        });
-    };
-
-    const getCategoriesAndProducts = async () => {
-      await axios
-        .get("http://localhost:4000/adminPanel/card/getCategoriesAndProducts")
-        .then((res) => {
-          setCategories(res.data.categories);
-          setProducts(res.data.products);
-        });
-    };
-
-    const getPersianDate = async () => {
-      await axios.get("http://localhost:4000/persianDate").then((res) => {
-        setPersianDate(res.data);
+  const getCard = () => {
+    axios
+      .post("http://localhost:4000/adminPanel/card/showCard", params)
+      .then((res) => {
+        setCard(res.data.card);
       });
-    };
+  };
+
+  const getPersianDate = async () => {
+    await axios.get("http://localhost:4000/persianDate").then((res) => {
+      setPersianDate(res.data);
+    });
+  };
+
+  const getCategoriesAndProducts = async () => {
+    await axios
+      .get("http://localhost:4000/adminPanel/card/getCategoriesAndProducts")
+      .then((res) => {
+        setCategories(res.data.categories);
+        setProducts(res.data.products);
+      });
+  };
+
+  useEffect(() => {
     getCard();
-    getCategoriesAndProducts();
     getPersianDate();
+    getCategoriesAndProducts();
   }, []);
 
+  const getProductsOfSelectedCategory = () => {
+    setCardProduct([]);
+    products.map((product) => {
+      if (product.categoryTitle === card.cardCategory) {
+        setCardProduct((cardProduct) => [...cardProduct, product.title]);
+      }
+    });
+  };
+
   useEffect(() => {
-    console.log(categories);
-    console.log(products);
+    getProductsOfSelectedCategory();
+  }, [card.cardCategory]); //initial card.cardCategory
+
+  useEffect(() => {
+  }, [cardProduct]);
+
+  const changeSelectedCategory = (categoryName, categoryValue) => {
+    setCard({
+      ...card,
+      [categoryName]: categoryValue,
+    });
+    setFirstProduct([]);
+    products.map((product) => {
+      if (product.categoryTitle === categoryValue) {
+        setFirstProduct((firstProduct) => [...firstProduct, product.title]);
+      }
+    });
+  };
+
+  useEffect(() => {
+    setCard({ ...card, cardProduct: firstProduct[0] });
+  }, [firstProduct]);
+
+  const changeSelectedProduct = (productName, productValue) => {
+    setCard({ ...card, cardProduct: productValue });
+  };
+
+  useEffect(() => {
+    console.log(card.cardProduct);
+  }, [card.cardProduct]);
+
+  useEffect(() => {
     console.log(card);
-  }, [categories, products]);
+  }, [card]);
+
+  // const getFieldsFromCard = () => {
+  //   if (!firstLoad) {
+  //     Object.values(card).map((fields) =>
+  //       Object.values(fields).map((field, index) => {
+  //         if (typeof field === "object") {
+  //           setFieldNames((fieldNames) => [...fieldNames, field.fieldName]);
+  //           setFieldValues((fieldValues) => [...fieldValues, field.fieldValue]);
+  //         }
+  //       })
+  //     );
+  //   }
+  // };
+  // useEffect(() => {
+  //   setFieldNames([]);
+  //   setFieldValues([]);
+  //   getFieldsFromCard();
+  // }, [card.cardProduct]);
+
+  // const getfieldNamesOfProducts = () => {
+  //   setFieldNames([]);
+  //   setFieldValues([]);
+  //   products.map((product) => {
+
+  //   });
+  // };
+
+  // const setNewFieldsInCard = () => {
+  //   setFieldNames([]);
+  //   setFieldValues([]);
+  //   products.map((product) => {
+  //     if (product.title === card.cardProduct) {
+  //       setCard({ ...card, cardFields: {} });
+  //       if (product.title === card.cardProduct) {
+  //         setFieldNames((fieldNames) => product.fields);
+  //       }
+  //     }
+  //   });
+  // };
+  // useEffect(() => {}, [card.cardProduct]);
+
+  // useEffect(() => {
+  //   console.log("newFields : ", card.cardFields);
+  // }, [card.cardFields]);
+
+  // useEffect(() => {
+  //   console.log("fieldNames : ", fieldNames);
+  //   console.log("fieldValues : ", fieldValues);
+  // }, [fieldNames]);
+
+  // useEffect(() => {
+  //   getProductsOfSelectedCategory();
+  // }, [card.cardCategory]);
+
+  // const changeFieldValue = (e, index) => {
+  //   const newFeildValues = [...fieldValues];
+  //   newFeildValues[index] = e;
+  //   setFieldValues(newFeildValues);
+  // };
+
+  // const updateCard = () => {
+  //   const data = {};
+  // };
+
   return (
     <>
       <div className="container-fluid">
@@ -107,7 +181,7 @@ const ShowCard = () => {
                 ویرایش کارت
               </div>
               <div className="col-8 mx-5 addBody">
-                {/* <form onSubmit={(e) => addCard(e)}> */}
+                {/* <form onSubmit={(e) => updateCard(e)}> */}
                 <div className="container-fluid">
                   <div className="row">
                     <div className="col-7">
@@ -123,14 +197,10 @@ const ShowCard = () => {
                         name="cardCategory"
                         id="cardCategory"
                         value={card.cardCategory}
-                        // onChange={(e) =>
-                        //   setCard({
-                        //     ...card,
-                        //     [e.target.name]: e.target.value,
-                        //   })
-                        // }
+                        onChange={(e) =>
+                          changeSelectedCategory(e.target.name, e.target.value)
+                        }
                       >
-                        {/* {card && <option> {card.cardCategory} </option>} */}
                         {categories.map((category, index) => (
                           <option> {category.title} </option>
                         ))}
@@ -148,19 +218,17 @@ const ShowCard = () => {
                     <div className="col-5 mt-3">
                       <select
                         className="form-select"
-                        name="productCard"
-                        id="productCard"
-                        // onChange={(e) =>
-                        //   setCard({
-                        //     ...card,
-                        //     [e.target.name]: e.target.value,
-                        //   })
-                        // }
+                        name="cardProduct"
+                        id="cardProduct"
+                        value={card.cardProduct}
+                        onChange={(e) =>
+                          changeSelectedProduct(e.target.name, e.target.value)
+                        }
                       >
-                        {/* {card && <option> {card.cardProduct} </option>} */}
-                        {productCard.map((product, index) => (
-                          <option> {product} </option>
-                        ))}
+                        {cardProduct &&
+                          cardProduct.map((product, index) => (
+                            <option> {product} </option>
+                          ))}
                       </select>
                     </div>
                   </div>
@@ -173,23 +241,17 @@ const ShowCard = () => {
                       </p>
                     </div>
                     <div className="col-5 my-3" id="formField">
-                      {card &&
-                        Object.values(card).map((fields) =>
-                          Object.values(fields).map(
-                            (field) =>
-                              typeof field === "object" && (
-                                <input
-                                  type="text"
-                                  className="form-control mt-1"
-                                  placeholder={field.fieldName}
-                                  value={field.fieldValue}
-                                  // onChange={(e) =>
-                                  //   handleChangeField(e.target.value, index)
-                                  // }
-                                />
-                              )
-                          )
-                        )}
+                      {fieldNames.map((fieldName, index) => (
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder={fieldName}
+                          value={fieldValues[index]}
+                          // onChange={(e) =>
+                          //   changeFieldValue(e.target.value, index)
+                          // }
+                        />
+                      ))}
                     </div>
                   </div>
                   <div className="row mt-1">
@@ -206,12 +268,12 @@ const ShowCard = () => {
                         name="cardStatus"
                         id="cardStatus"
                         value={card.cardStatus}
-                        // onChange={(e) =>
-                        //   setCard({
-                        //     ...card,
-                        //     [e.target.name]: e.target.value,
-                        //   })
-                        // }
+                        onChange={(e) =>
+                          setCard({
+                            ...card,
+                            [e.target.name]: e.target.value,
+                          })
+                        }
                       >
                         <option> فعال </option>
                         <option> غیر فعال </option>

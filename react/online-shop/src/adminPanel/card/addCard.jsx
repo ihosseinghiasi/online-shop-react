@@ -19,7 +19,7 @@ const AddCard = () => {
   }, [card.cardCategory]);
 
   useEffect(() => {
-    getfieldValuesOfProducts();
+    getfieldNamesOfProducts();
   }, [card.cardProduct]);
 
   const getProductsOfSelectedCategorie = () => {
@@ -31,15 +31,11 @@ const AddCard = () => {
     });
   };
 
-  const getfieldValuesOfProducts = () => {
+  const getfieldNamesOfProducts = () => {
     setFieldNames([]);
     products.map((product) => {
       if (product.title === card.cardProduct) {
         setFieldNames(product.fields);
-        // console.log(product.fields);
-        // product.fields.map((field) =>
-        //   setFieldNames((fieldNames) => [...fieldNames, field])
-        // );
       }
     });
   };
