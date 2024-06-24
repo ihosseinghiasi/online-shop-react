@@ -57,3 +57,33 @@ module.exports.showCard = async (req, res, next) => {
   const card = await Card.findById({ _id: id })
   if (card) res.json({card})
 }
+
+module.exports.updateCard = async (req, res, next) => {
+  try {
+    const { card, fieldNames, fieldValues } = req.body
+    const id = card._id
+    let fields = {}
+     
+    if(fieldValues !== "") {
+        fields = Object.fromEntries(
+          fieldNames.map((fieldName, index) => [`field${[index]}`, 
+                {"fieldName": fieldName, "fieldValue": fieldValues[index]}
+          ])
+      )
+    }
+  
+    const data = {
+      cardCategory: card.cardCategory,
+      cardProduct: card.cardProduct,
+      cardStatus: card.cardStatus,
+      cardFields: fields
+    }
+  
+    const cardUpdated = await Card.updateOne({ _id: id }, { $set: data })
+    if ( cardUpdated.acknowledged ) {
+      res.json({ status: "Ok" })
+    }  
+  } catch (err) {
+    next(err)
+  }
+}
