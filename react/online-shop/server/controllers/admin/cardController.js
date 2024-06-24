@@ -87,3 +87,15 @@ module.exports.updateCard = async (req, res, next) => {
     next(err)
   }
 }
+
+module.exports.deleteCard = async (req, res, next) => {
+  try {
+    const { id } = req.body
+    const deletedCard = await Card.deleteOne({ _id: id })
+    if (deletedCard) {
+      res.json({ status: "Ok" })
+    }
+  } catch (err) {
+    next(err)
+  }
+}

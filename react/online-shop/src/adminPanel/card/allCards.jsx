@@ -29,19 +29,18 @@ const AllCards = () => {
   }, []);
 
   async function handleDelete(id) {
-    await axios
-      .post(
-        "http://localhost:4000/adminPanel/product/deleteProduct",
-        { id },
-        {
-          withCredentials: true,
-        }
-      )
-      .then((res) => {
-        if (res.data.status) {
-          console.log(res.data);
-        }
-      });
+    await axios.post(
+      "http://localhost:4000/adminPanel/card/deleteCard",
+      { id },
+      {
+        withCredentials: true,
+      }
+    )
+    // .then((res) => {
+    //   if (res.data.status) {
+    //     console.log(res.data);
+    //   }
+    // });
   }
 
   return (
@@ -73,13 +72,13 @@ const AllCards = () => {
                       <th className="col-1" scope="col">
                         #
                       </th>
-                      <th class="col-3" scope="col">
+                      <th className="col-3" scope="col">
                         دسته بندی محصول
                       </th>
-                      <th class="col-3" scope="col">
+                      <th className="col-3" scope="col">
                         عنوان محصول
                       </th>
-                      <th class="col-2" scope="col">
+                      <th className="col-2" scope="col">
                         وضعیت
                       </th>
                       <th className="col-3" scope="col">

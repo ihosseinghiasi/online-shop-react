@@ -83,7 +83,6 @@ module.exports.deleteAdmin = async (req, res, next) => {
     try {
         const {adminId} = req.body
         const deleteAdmin = await Admin.findByIdAndDelete({ _id: adminId })
-        console.log(deleteAdmin)
         if(deleteAdmin) {
             return res.json({ status: "OK" })
         }

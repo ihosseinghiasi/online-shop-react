@@ -6,5 +6,6 @@ router.post('/addCard', cardController.addCard)
 router.get('/allCards', cardController.allCards)
 router.post('/showCard', cardController.showCard)
 router.post('/updateCard', cardController.updateCard)
+router.post('/deleteCard', cardController.deleteCard)
 
 module.exports = router
