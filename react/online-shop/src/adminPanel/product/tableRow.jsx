@@ -7,8 +7,8 @@ const TableRow = ({ index, id, namak, title, handleDelete }) => {
     <>
       <tr>
         <td className="faField"> {index} </td>
-        <td className="faField"> {namak} </td>
-        <td className="enField"> {title} </td>
+        <td className="enField"> {namak} </td>
+        <td className="faField"> {title} </td>
         <td className="faField"> </td>
         <td>
           <div class="container">

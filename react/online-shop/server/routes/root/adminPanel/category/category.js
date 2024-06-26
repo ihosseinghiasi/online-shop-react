@@ -15,5 +15,6 @@ router.get('/allCategories', categoryController.allCategories)
 router.post('/showCategory', categoryController.showCategory)
 router.post('/updateCategory', upload.single('file'), categoryController.updateCategory)
 router.post('/deleteCategory', categoryController.deleteCategory)
+router.post('/category', categoryController.category)
 
 module.exports = router

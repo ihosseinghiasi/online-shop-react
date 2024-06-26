@@ -9,7 +9,11 @@ const TableRow = ({ index, id, namak, title, handleDelete }) => {
         <td className="faField"> {index} </td>
         <td className="faField"> {namak} </td>
         <td className="enField"> {title} </td>
-        <td className="faField"> </td>
+        <td className="faField">
+          <Link to={`/${namak}/${id}`} class="btn btn-info" role="button">
+            <img src={"/uploads/icons/eye.svg"} alt="showCategoryPage" />
+          </Link>
+        </td>
         <td>
           <div class="container">
             <div class="row justify-content-center">

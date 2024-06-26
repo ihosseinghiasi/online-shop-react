@@ -75,10 +75,10 @@ const AllProducts = () => {
                         #
                       </th>
                       <th className="col-3" scope="col">
-                        محصولات
+                        نامک محصول
                       </th>
                       <th className="col-3" scope="col">
-                        نامک محصول
+                        نام محصول
                       </th>
                       <th className="col-2" scope="col">
                         دسترسی به سایت

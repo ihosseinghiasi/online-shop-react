@@ -44,7 +44,8 @@ module.exports.showProduct = async (req, res, next) => {
 module.exports.updateProduct = async (req, res, next) => {
   try {
     const newCategoryImage = req.file
-    const { productName, title, description, id, image, price, accessible, cycle, fields } = req.body
+    console.log(newCategoryImage)
+    const { productName, title, description, id, image, price, accessible, cycle, categoryTitle, fields } = req.body
     const data = {
       productName,
       title,
@@ -53,6 +54,7 @@ module.exports.updateProduct = async (req, res, next) => {
       price,
       accessible,
       cycle,
+      categoryTitle,
       fields
     }
     if (newCategoryImage !== undefined) {

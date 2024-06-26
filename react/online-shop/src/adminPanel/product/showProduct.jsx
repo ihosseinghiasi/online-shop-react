@@ -92,6 +92,7 @@ const ShowProduct = () => {
     formData.append("title", product.title);
     formData.append("cycle", product.cycle);
     formData.append("price", product.price);
+    formData.append("image", product.image);
     formData.append("accessible", product.accessible);
     formData.append("description", product.description);
     formData.append("categoryTitle", product.categoryTitle);

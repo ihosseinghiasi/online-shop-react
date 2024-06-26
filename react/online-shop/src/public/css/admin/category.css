@@ -20,27 +20,27 @@
     margin: 5px 0 0 10px;
 }
 
+.fileUloadArea {
+    padding: 2px;
+    border-bottom: 2px solid gray;
+    border-radius: 25px;
+}
+
 .imageUpload {
-    height: 160px;
-    width: 210px;
-    margin: 0 35px 0 0;
+    height: 240px;
+    width: 200px;
     border-top-left-radius: 7px;
     border-top-right-radius: 7px;
 }
 
 .categoryImage {
-    height: 140px;
+    height: 240px;
     width: 200px;
+    margin-right: 35px;
     border-top-left-radius: 7px;
     border-top-right-radius: 7px;
 }
 
 .btnSubmit {
     margin-right: 30%;
-}
-
-.fileUloadArea {
-    padding: 5px;
-    border-bottom: 2px solid gray;
-    border-radius: 25px;
 }

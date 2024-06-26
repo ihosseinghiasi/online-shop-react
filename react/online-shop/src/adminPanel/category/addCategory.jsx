@@ -115,12 +115,14 @@ const AddCategory = () => {
                       </p>
                     </div>
                     <div className="col-4 fileUloadArea">
-                      <img
-                        src={UrlCategoryImage}
-                        alt="categoryImage"
-                        className="imageUpload rounded-full"
-                        onClick={handleImageUpload}
-                      />
+                      <div className="imageUpload">
+                        <img
+                          src={UrlCategoryImage}
+                          alt="categoryImage"
+                          className="categoryImage"
+                          onClick={handleImageUpload}
+                        />
+                      </div>
 
                       <input
                         type="file"
@@ -134,7 +136,7 @@ const AddCategory = () => {
                       <input
                         type="submit"
                         id="submit"
-                        className="btn btn-success mt-2 btnSubmit"
+                        className="btn btn-success mt-1 btnSubmit"
                         value="ذخیره دسته بندی"
                       />
                     </div>

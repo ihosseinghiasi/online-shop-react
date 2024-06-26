@@ -1,10 +1,11 @@
 import React from "react";
+import { Route, Routes } from "react-router-dom";
 import Home from "./main/home"
+import Category from "./main/category";
 import Register from './authentication/register'
 import SmsForm from "./authentication/smsForm";
 import ConfirmSmsForm from "./authentication/confirmSmsForm";
 import Login from "./authentication/login";
-import { Route, Routes } from "react-router-dom";
 import AdminCounter from "./adminPanel/counter";
 import AddAdmin from "./adminPanel/admin/addAdmin";
 import AllAdmins from "./adminPanel/admin/allAdmins";
@@ -33,6 +34,7 @@ const App = () => {
                 <Route path="/smsForm" element={<SmsForm />}/>
                 <Route path="/confirmSmsForm" element={<ConfirmSmsForm />}/>
                 <Route path="/login" element={<Login />} />
+                <Route path="/:category/:id" element={<Category />} />
                 <Route path="/admin/Counter" element={<AdminCounter />} />
                 <Route path="/admin/newAdmin" element={<AddAdmin />} />
                 <Route path="/admin/allAdmins" element={<AllAdmins />}/>
@@ -49,8 +51,6 @@ const App = () => {
                 <Route path="/admin/newCard" element={<AddCard />} />
                 <Route path="/admin/allCards" element={<AllCards />} />
                 <Route path="/admin/showCard/:id" element={<ShowCard />} />
-
-
            </Routes>
         </>
     );

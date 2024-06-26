@@ -1,4 +1,5 @@
 const Category = require('../../models/category')
+const Product = require('../../models/product')
 
 module.exports.newCategory = async (req, res, next) => {
     try {
@@ -71,5 +72,16 @@ module.exports.deleteCategory = async (req, res, next) => {
     if (deletedCategory) res.json({ status: "Ok" })  
   } catch (err) {
     next(err)
+  }
+}
+
+module.exports.category = async (req, res, next) => {
+  try {
+    const { id } = req.body
+    const category = await Category.findById({ _id: id })
+    const categoryProducts = await Product.find({ categoryTitle: category.title }) 
+    if(category) res.json({ status: "Ok", category, categoryProducts })
+  } catch (err) {
+    
   }
 }
