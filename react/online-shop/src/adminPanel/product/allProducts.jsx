@@ -5,7 +5,6 @@ import AdminNavbar from "../adminNavbar";
 import axios from "axios";
 import RightMenu from "../rightMenu";
 import TableRow from "./tableRow";
-import { useNavigate } from "react-router-dom";
 
 const AllProducts = () => {
   const [products, setProducts] = useState([]);

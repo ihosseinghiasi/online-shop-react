@@ -1,18 +1,22 @@
-import "../public/css/shop/mainPage.css"
+import { Link } from "react-router-dom";
+import "../public/css/shop/mainPage.css";
 
-const CategoryItem = ({image, title}) => {
-    return ( 
-        <>
-          <div className="categoryFrame">
-                <a href="/admin-cPanel/category/<%= category.categoryName %>/<%= category.id %>">
-                    <div className="categoryItem">
-                        <img src={image} alt="categoryImage" />
-                        <p> {title} </p>
-                    </div>    
-                </a>
-            </div>            
-        </>
-     )
-}
- 
+const CategoryItem = ({ image, namak, title, id }) => {
+  return (
+    <>
+      <div className="categoryFrame">
+        <Link to={`/${namak}/${id}`}>
+          <div className="categoryItem">
+            <img
+              src={require(`../images/category/${image}`)}
+              alt="categoryImage"
+            />
+            <p className="enField"> {title} </p>
+          </div>
+        </Link>
+      </div>
+    </>
+  );
+};
+
 export default CategoryItem;

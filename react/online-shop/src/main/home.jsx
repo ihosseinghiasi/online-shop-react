@@ -1,10 +1,25 @@
-// import { ToastContainer, toast } from "react-toastify";
 import "../public/css/shop/mainPage.css";
 import mainImage from "../public/pictures/shopping01.jpg";
 import Navbar from "./navbar";
 import Footer from "./footer";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import CategoryItem from "./categoryItem";
 
 const Home = () => {
+  const [categories, setCategories] = useState();
+
+  useEffect(() => {
+    getCategories();
+  }, []);
+
+  const getCategories = async () => {
+    await axios
+      .get("http://localhost:4000/adminPanel/category/allCategories")
+      .then((res) => {
+        setCategories(res.data.categories);
+      });
+  };
   return (
     <>
       <Navbar />
@@ -40,6 +55,16 @@ const Home = () => {
         </div>
         <p className="pCategories">انتخاب دسته بندی</p>
       </div>
+
+      {categories &&
+        categories.map((category) => (
+          <CategoryItem
+            image={category.image}
+            title={category.title}
+            id={category._id}
+            namak={category.categoryName}
+          />
+        ))}
 
       <footer>
         <Footer />
