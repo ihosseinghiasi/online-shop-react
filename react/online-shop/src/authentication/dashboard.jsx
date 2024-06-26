@@ -6,6 +6,7 @@ import axios from "axios";
 import "../public/css/shop/mainPage.css";
 import mainImage from "../public/pictures/shopping01.jpg";
 import Footer from "../main/footer";
+import CategoryItem from "../main/categoryItem";
 import NavbarDashboard from "../authentication/navbardashboard";
 
 const Dashboard = () => {
@@ -13,6 +14,19 @@ const Dashboard = () => {
   const [isAuthenticated, setAuthenticated] = useState(false);
   const [fullName, setFullName] = useState("");
   const navigate = useNavigate();
+  const [categories, setCategories] = useState();
+
+  useEffect(() => {
+    getCategories();
+  }, []);
+
+  const getCategories = async () => {
+    await axios
+      .get("http://localhost:4000/adminPanel/category/allCategories")
+      .then((res) => {
+        setCategories(res.data.categories);
+      });
+  };
 
   useEffect(() => {
     const verifyUser = async () => {
@@ -65,6 +79,15 @@ const Dashboard = () => {
         </div>
         <p className="pCategories">انتخاب دسته بندی</p>
       </div>
+      {categories &&
+        categories.map((category) => (
+          <CategoryItem
+            image={category.image}
+            title={category.title}
+            id={category._id}
+            namak={category.categoryName}
+          />
+        ))}
 
       <footer>
         <Footer />
