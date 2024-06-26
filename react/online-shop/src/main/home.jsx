@@ -3,13 +3,20 @@ import mainImage from "../public/pictures/shopping01.jpg";
 import Navbar from "./navbar";
 import Footer from "./footer";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import CategoryItem from "./categoryItem";
+import { useCookies } from "react-cookie";
 
 const Home = () => {
   const [categories, setCategories] = useState();
+  const [cookies] = useCookies([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
+    if (cookies) {
+      navigate("/dashboard");
+    }
     getCategories();
   }, []);
 
