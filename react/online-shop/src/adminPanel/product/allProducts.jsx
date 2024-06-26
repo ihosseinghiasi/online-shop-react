@@ -76,11 +76,11 @@ const AllProducts = () => {
                       <th className="col-3" scope="col">
                         نامک محصول
                       </th>
-                      <th className="col-3" scope="col">
+                      <th className="col-4" scope="col">
                         نام محصول
                       </th>
-                      <th className="col-2" scope="col">
-                        دسترسی به سایت
+                      <th className="col-1" scope="col">
+                        تعداد
                       </th>
                       <th className="col-3" scope="col">
                         عملیات
@@ -94,6 +94,7 @@ const AllProducts = () => {
                         id={product._id}
                         namak={product.productName}
                         title={product.title}
+                        count={product.count}
                         handleDelete={handleDelete}
                       />
                     ))}

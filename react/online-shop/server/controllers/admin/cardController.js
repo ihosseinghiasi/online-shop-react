@@ -35,6 +35,10 @@ module.exports.addCard = async (req, res, next) => {
       }
     const newCard = await Card.create(data)
     if (newCard) {
+      const product = await Product.findOne({ title: data.cardProduct })
+      const updatedCount = ++product.count
+      const updatedProduct = await Product.updateOne({ title: data.cardProduct },
+         { $set: { count: updatedCount } })
       res.json({status: "Ok"})
     }  
 

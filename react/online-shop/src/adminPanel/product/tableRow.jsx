@@ -2,14 +2,14 @@ import { Link } from "react-router-dom";
 import "../../public/css/admin/admin.css";
 import "../../public/css/admin/general.css";
 
-const TableRow = ({ index, id, namak, title, handleDelete }) => {
+const TableRow = ({ index, id, namak, title, count, handleDelete }) => {
   return (
     <>
       <tr>
         <td className="faField"> {index} </td>
         <td className="enField"> {namak} </td>
         <td className="faField"> {title} </td>
-        <td className="faField"> </td>
+        <td className="faField"> {count} </td>
         <td>
           <div class="container">
             <div class="row justify-content-center">
