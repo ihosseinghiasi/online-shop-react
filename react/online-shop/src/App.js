@@ -23,6 +23,7 @@ import ShowProduct from "./adminPanel/product/showProduct";
 import AddCard from "./adminPanel/card/addCard";
 import AllCards from "./adminPanel/card/allCards";
 import ShowCard from "./adminPanel/card/showCard";
+import Payment from "./main/payment";
 
 const App = () => {
     return ( 
@@ -35,6 +36,7 @@ const App = () => {
                 <Route path="/confirmSmsForm" element={<ConfirmSmsForm />}/>
                 <Route path="/login" element={<Login />} />
                 <Route path="/:category/:id" element={<Category />} />
+                <Route path="/payment/:id" element={<Payment />} />
                 <Route path="/admin/Counter" element={<AdminCounter />} />
                 <Route path="/admin/newAdmin" element={<AddAdmin />} />
                 <Route path="/admin/allAdmins" element={<AllAdmins />}/>

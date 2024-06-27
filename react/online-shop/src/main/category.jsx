@@ -1,17 +1,18 @@
 import Navbar from "./navbar";
+import Dashboard from "../authentication/dashboard";
 import Footer from "./footer";
 import "../public/css/shop/categoryPage.css";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useCookies } from "react-cookie";
 import axios from "axios";
 
 const Category = () => {
   const params = useParams();
   const [category, setCategory] = useState();
   const [categoryProducts, setCategoryProducts] = useState();
-  useEffect(() => {
-    sendParam();
-  }, []);
+  const [cookies] = useCookies([]);
+  const [navStatus, setNavStatus] = useState();
 
   const sendParam = async () => {
     await axios
@@ -25,64 +26,49 @@ const Category = () => {
       });
   };
 
+  useEffect(() => {
+    sendParam();
+  }, []);
+
   return (
     <>
-      <Navbar />
+      {/* {navStatus && (navStatus === "Navbar" ? <Navbar /> : <Dashboard />)} */}
       {category && (
-        <div class="container-flud">
-          {/* <%if (userStatus === "user") { %>
-    <%- include('../components/dashboardNavbar') -%>
-<% } else { %>
-    <%- include('../components/navbar') -%>
-<% } %> */}
-
-          <div class="imageFrame">
+        <div className="container-flud">
+          <div className="imageFrame">
             <img
               src={"/uploads/pictures/digitalMarketing.jpg"}
               className="mainImage"
               alt="mainImage"
             />
-            <div class="titleFrame">
+            <div className="titleFrame">
               <h1>{category.title}</h1>
             </div>
           </div>
-          <div class="description" id="description">
+          <div className="description" id="description">
             {category.description}
           </div>
 
-          <div class="productFrame">
-            {/* <% Object.values(products).forEach( product => { %>
-            <a href="/admin-cPanel/product/<%= product.productName %>/<%= product.id %>">
-                <% if (product.count === 0) { %>
-                    <div class="productItem" style="pointer-events: none;">
-                <% } else { %>
-                    <div class="productItem">
-                        <% } %>
-                    <img src="<%= product.image %>" alt="productImage">
-                    <p><%= product.title %></p>
-                    <p class="price">
-                        <img src="/icons/dollar-sign.svg" alt="price">
-                        قیمت : <%= product.price %> تومان </p>
-                        <span> افزودن به سبد </span>
-                </div>    
-            </a>
-        <% } ) %>
-        </div> */}
-
+          <div className="productFrame">
             {categoryProducts.map((product) => (
               <>
-                <div class="productItem">
-                  <img
-                    src={require(`../images/category/${product.image}`)}
-                    alt="productImage"
-                  />
-                  <p>{product.title}</p>
-                  <p class="price">
-                    <img src="/uploads/icons/dollar-sign.svg" alt="price" />
-                    قیمت : {product.price} تومان{" "}
-                  </p>
-                  <span> افزودن به سبد </span>
-                </div>
+                <Link to={`/payment/${product._id}`}>
+                  <div
+                    className="productItem"
+                    style={{ pointerEvents: product.count === 0 && "none" }}
+                  >
+                    <img
+                      src={require(`../images/category/${product.image}`)}
+                      alt="productImage"
+                    />
+                    <p>{product.title}</p>
+                    <p className="price">
+                      <img src="/uploads/icons/dollar-sign.svg" alt="price" />
+                      قیمت : {product.price} تومان{" "}
+                    </p>
+                    <span> افزودن به سبد </span>
+                  </div>
+                </Link>
               </>
             ))}
           </div>

@@ -80,3 +80,15 @@ module.exports.deleteProduct = async (req, res, next) => {
     next(err)
   }
 }
+
+module.exports.product = async (req, res, next) => {
+  try {
+    const { id } = req.body
+    const product = await Product.findById({ _id: id })
+    if (product) {
+      res.json({ status: "Ok", product })
+    }
+  } catch (err) {
+    next(err)
+  }
+}

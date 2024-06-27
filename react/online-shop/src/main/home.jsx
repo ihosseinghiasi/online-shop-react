@@ -10,11 +10,11 @@ import { useCookies } from "react-cookie";
 
 const Home = () => {
   const [categories, setCategories] = useState();
-  const [cookies] = useCookies([]);
+  const [cookies] = useCookies();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (cookies) {
+    if (cookies.comercial) {
       navigate("/dashboard");
     }
     getCategories();

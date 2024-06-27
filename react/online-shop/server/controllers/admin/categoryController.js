@@ -82,6 +82,6 @@ module.exports.category = async (req, res, next) => {
     const categoryProducts = await Product.find({ categoryTitle: category.title }) 
     if(category) res.json({ status: "Ok", category, categoryProducts })
   } catch (err) {
-    
+    next(err)
   }
 }
