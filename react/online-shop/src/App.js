@@ -24,6 +24,9 @@ import AddCard from "./adminPanel/card/addCard";
 import AllCards from "./adminPanel/card/allCards";
 import ShowCard from "./adminPanel/card/showCard";
 import Payment from "./main/payment";
+import AddTicket from "./adminPanel/ticket/addTicket";
+import UserCounter from "./userPanel/counter";
+import Profile from "./userPanel/profile/profile";
 
 const App = () => {
     return ( 
@@ -53,6 +56,10 @@ const App = () => {
                 <Route path="/admin/newCard" element={<AddCard />} />
                 <Route path="/admin/allCards" element={<AllCards />} />
                 <Route path="/admin/showCard/:id" element={<ShowCard />} />
+                <Route path="/admin/newTicket" element={<AddTicket />} />
+                <Route path="/user/counter" element={<UserCounter />} />
+                <Route path="/user/profile" element={<Profile />} />
+
            </Routes>
         </>
     );

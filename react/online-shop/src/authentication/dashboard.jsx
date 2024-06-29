@@ -12,7 +12,7 @@ import NavbarDashboard from "../authentication/navbardashboard";
 const Dashboard = () => {
   const [cookies, setCookies, removeCookie] = useCookies([]);
   const [isAuthenticated, setAuthenticated] = useState(false);
-  const [fullName, setFullName] = useState("");
+  const [user, setUser] = useState("");
   const navigate = useNavigate();
   const [categories, setCategories] = useState();
 
@@ -37,7 +37,7 @@ const Dashboard = () => {
       );
       if (data.status) {
         setAuthenticated(true);
-        setFullName(data.user);
+        setUser(data.user);
       }
     };
 
@@ -46,7 +46,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <NavbarDashboard fullName={fullName} />
+      <NavbarDashboard fullName={user.firstName + user.lastName} />
       <div className="container-flud">
         <div className="main">
           <img src={mainImage} className="mainImage" alt="mainImage" />

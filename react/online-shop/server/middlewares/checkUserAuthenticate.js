@@ -11,8 +11,8 @@ module.exports.checkUser = (req, res, next) => {
             } else {
                 const user = await User.findById(decodedToken.id)
                 if(user) {
-                    const fullName = user.firstName + " " + user.lastName
-                    res.json({status: true, user: fullName})
+                    
+                    res.json({status: true, user})
                 } else {
                     res.json({status: false})
                     next()
