@@ -1,7 +1,7 @@
 import "../public/css/shop/mainPage.css";
 import mainImage from "../public/pictures/shopping01.jpg";
 import Navbar from "./navbar";
-import Footer from "./footer";
+import Footer from "../components/layout/footer/footer.component";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -73,9 +73,9 @@ const Home = () => {
           />
         ))}
 
-      <footer>
+      {/* <footer>
         <Footer />
-      </footer>
+      </footer> */}
     </>
   );
 };

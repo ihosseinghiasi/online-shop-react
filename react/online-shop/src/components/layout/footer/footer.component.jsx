@@ -1,10 +1,11 @@
-import phoneIcon from "../public/icons/phone.svg";
-import atSign from "../public/icons/at-sign.svg";
-import mapPin from "../public/icons/map-pin.svg";
-import leftChevrons from "../public/icons/chevrons-left.svg";
-import etemadSign from "../public/pictures/namad-etemad.png";
-import samandehi from "../public/pictures/samandehi.png";
-import "../public/css/shop/mainPage.css";
+import phoneIcon from "../../../public/icons/phone.svg";
+import atSign from "../../../public/icons/at-sign.svg";
+import mapPin from "../../../public/icons/map-pin.svg";
+import leftChevrons from "../../../public/icons/chevrons-left.svg";
+import etemadSign from "../../../public/pictures/namad-etemad.png";
+import samandehi from "../../../public/pictures/samandehi.png";
+
+import "../../../public/css/shop/mainPage.css";
 
 const Footer = () => {
   return (
