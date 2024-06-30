@@ -6,7 +6,7 @@ import "../../public/css/admin/product.css";
 import RightMenu from "../rightMenu";
 import AdminNavbar from "../adminNavbar";
 import defaultImage from "../../public/pictures/unimage.png";
-import { wordifyfa } from "../../public/wordifyfa/src/wordifyfa.ts";
+// import { wordifyfa } from "../../public/wordifyfa/src/wordifyfa.ts";
 
 const ShowProduct = () => {
   const [product, setProduct] = useState({});
@@ -289,9 +289,7 @@ const ShowProduct = () => {
                             })
                           }
                         />
-                        <p className="mt-2 me-2" id="persianPrice">
-                          {wordifyfa(product.price) + " تومان "}
-                        </p>
+                        <p className="mt-2 me-2" id="persianPrice"></p>
                       </div>
                     </div>
 

@@ -1,9 +1,11 @@
-import Footer from "./footer";
+import { useState, useEffect } from "react";
+import axios from "axios";
+
+import Footer from "../components/layout/footer/footer.component";
+
 import "../public/css/shop/mainPage.css";
 import "../public/css/shop/productPage.css";
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
-import axios from "axios";
 
 const Payment = () => {
   const params = useParams();

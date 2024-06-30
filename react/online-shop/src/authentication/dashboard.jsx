@@ -5,7 +5,7 @@ import axios from "axios";
 // import { ToastContainer, toast } from "react-toastify";
 import "../public/css/shop/mainPage.css";
 import mainImage from "../public/pictures/shopping01.jpg";
-import Footer from "../main/footer";
+import Footer from "../components/layout/footer/footer.component";
 import CategoryItem from "../main/categoryItem";
 import NavbarDashboard from "../authentication/navbardashboard";
 

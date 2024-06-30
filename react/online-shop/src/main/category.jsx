@@ -1,6 +1,6 @@
 import Navbar from "./navbar";
 import Dashboard from "../authentication/dashboard";
-import Footer from "./footer";
+import Footer from "../components/layout/footer/footer.component";
 import "../public/css/shop/categoryPage.css";
 import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -72,9 +72,6 @@ const Category = () => {
               </>
             ))}
           </div>
-          <footer>
-            <Footer />
-          </footer>
         </div>
       )}
     </>
