@@ -1,10 +1,3 @@
-import phoneIcon from "../../../public/icons/phone.svg";
-import atSign from "../../../public/icons/at-sign.svg";
-import mapPin from "../../../public/icons/map-pin.svg";
-import leftChevrons from "../../../public/icons/chevrons-left.svg";
-import etemadSign from "../../../public/pictures/namad-etemad.png";
-import samandehi from "../../../public/pictures/samandehi.png";
-
 import "../../../public/css/shop/mainPage.css";
 
 const Footer = () => {
@@ -14,15 +7,15 @@ const Footer = () => {
         <h2 className="contactsTitle">اطلاعات تماس</h2>
         <div className="contactsDetail">
           <div className="mt-2 me-4" style={{ display: "inline-block" }}>
-            <img src={phoneIcon} alt="phone" />
+            <img src={"/uploads/icons/phone.svg"} alt="phone" />
           </div>
           <div style={{ display: "inline-block" }} className="my-2 mx-1">
             <p className="contactsParagraph">09192300017</p>
-          </div>{" "}
+          </div>
         </div>
         <div className="contactsDetail">
           <div className="mt-2 me-4" style={{ display: "inline-block" }}>
-            <img src={atSign} alt="atSign" />
+            <img src={"/uploads/icons/at-sign.svg"} alt="atSign" />
           </div>
           <div style={{ display: "inline-block" }} className="my-2 mx-1">
             <p className="contactsParagraph">expresscard.eshopping@gmail.com</p>
@@ -30,7 +23,7 @@ const Footer = () => {
         </div>
         <div className="contactsDetail">
           <div className="mt-2 me-4" style={{ display: "inline-block" }}>
-            <img src={mapPin} alt="mapPin" />
+            <img src={"/uploads/icons/map-pin.svg"} alt="mapPin" />
           </div>
           <div style={{ display: "inline-block" }} className="my-2 mx-1">
             <p className="contactsParagraph">ایران - تهران</p>
@@ -42,7 +35,10 @@ const Footer = () => {
         <div className="divLinks">
           <div className="contactsDetail">
             <div className="mt-2 me-4" style={{ display: "inline-block" }}>
-              <img src={leftChevrons} alt="leftChevrons" />
+              <img
+                src={"/uploads/icons/chevrons-left.svg"}
+                alt="leftChevrons"
+              />
             </div>
             <div style={{ display: "inline-block" }} className="my-2 mx-1">
               <p className="contactsParagraph">راهنمای خرید</p>
@@ -50,7 +46,10 @@ const Footer = () => {
           </div>
           <div className="contactsDetail">
             <div className="mt-2 me-4" style={{ display: "inline-block" }}>
-              <img src={leftChevrons} alt="leftChevrons" />
+              <img
+                src={"/uploads/icons/chevrons-left.svg"}
+                alt="leftChevrons"
+              />
             </div>
             <div style={{ display: "inline-block" }} className="my-2 mx-1">
               <p className="contactsParagraph">قوانین و مقررات</p>
@@ -58,7 +57,10 @@ const Footer = () => {
           </div>
           <div className="contactsDetail">
             <div className="mt-2 me-4" style={{ display: "inline-block" }}>
-              <img src={leftChevrons} alt="leftChevrons" />
+              <img
+                src={"/uploads/icons/chevrons-left.svg"}
+                alt="leftChevrons"
+              />
             </div>
             <div style={{ display: "inline-block" }} className="my-2 mx-1">
               <p className="contactsParagraph">ثبت شکایت</p>
@@ -68,7 +70,10 @@ const Footer = () => {
         <div className="divLinks">
           <div className="contactsDetail">
             <div className="mt-2 me-4" style={{ display: "inline-block" }}>
-              <img src={leftChevrons} alt="leftChevrons" />
+              <img
+                src={"/uploads/icons/chevrons-left.svg"}
+                alt="leftChevrons"
+              />
             </div>
             <div style={{ display: "inline-block" }} className="my-2 mx-1">
               <p className="contactsParagraph">صفحه اینتاگرام</p>
@@ -76,7 +81,10 @@ const Footer = () => {
           </div>
           <div className="contactsDetail">
             <div className="mt-2 me-4" style={{ display: "inline-block" }}>
-              <img src={leftChevrons} alt="leftChevrons" />
+              <img
+                src={"/uploads/icons/chevrons-left.svg"}
+                alt="leftChevrons"
+              />
             </div>
             <div style={{ display: "inline-block" }} className="my-2 mx-1">
               <p className="contactsParagraph">کانال تلگرام</p>
@@ -84,7 +92,10 @@ const Footer = () => {
           </div>
           <div className="contactsDetail">
             <div className="mt-2 me-4" style={{ display: "inline-block" }}>
-              <img src={leftChevrons} alt="leftChevrons" />
+              <img
+                src={"/uploads/icons/chevrons-left.svg"}
+                alt="leftChevrons"
+              />
             </div>
             <div style={{ display: "inline-block" }} className="my-2 mx-1">
               <p className="contactsParagraph">اکانت لینکدین</p>
@@ -97,14 +108,22 @@ const Footer = () => {
         <div className="divSymbols">
           <div className="contactsDetail">
             <div style={{ display: "inline-block" }}>
-              <img className="picLogo" src={etemadSign} alt="etemadSign" />
+              <img
+                className="picLogo"
+                src={"/uploads/pictures/namad-etemad.png"}
+                alt="etemadSign"
+              />
             </div>
           </div>
         </div>
         <div className="divSymbols">
           <div className="contactsDetail">
             <div style={{ display: "inline-block" }}>
-              <img className="picLogo" src={samandehi} alt="samandehiSign" />
+              <img
+                className="picLogo"
+                src={"/uploads/pictures/samandehi.png"}
+                alt="samandehiSign"
+              />
             </div>
           </div>
         </div>

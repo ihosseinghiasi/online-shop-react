@@ -1,7 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../../../public/css/shop/navbar.css";
-
 const navbarComponent = () => {
   function userLogin() {
     localStorage.setItem("userType", "user");
@@ -67,13 +65,11 @@ const navbarComponent = () => {
             <ul className="navbar-nav me-auto me-5">
               <li className="nav-item ms-3">
                 <Link to="/smsForm" className="nav-link linkColor">
-                  <img src={"./uploads/icons/user.svg"} alt="icon" />
+                  <img src={"/uploads/icons/user.svg"} alt="icon" />
                 </Link>
               </li>
               <li className="nav-item ms-3">
-                <Link href="" className="nav-link linkColor">
-                  {/* <img src={user} alt="shopping"> */}
-                </Link>
+                <Link href="" className="nav-link linkColor"></Link>
               </li>
               <li className="nav-item ms-5">
                 <button className="callButton">

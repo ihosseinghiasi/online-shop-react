@@ -21,7 +21,8 @@ import ShowProduct from "./adminPanel/product/showProduct";
 import AddCard from "./adminPanel/card/addCard";
 import AllCards from "./adminPanel/card/allCards";
 import ShowCard from "./adminPanel/card/showCard";
-import Payment from "./main/payment";
+import Payment from "./pages/payment.page";
+import Category from "./pages/category.page";
 import AddTicket from "./adminPanel/ticket/addTicket";
 import UserCounter from "./userPanel/counter";
 import Profile from "./userPanel/profile/profile";
@@ -41,19 +42,26 @@ const App = () => {
               </MainLayoutComponent>
             }
           />
-          {/* <Route
+          <Route
             path="/:category/:id"
             element={
               <MainLayoutComponent>
                 <Category />
               </MainLayoutComponent>
             }
-          /> */}
+          />
+          <Route
+            path="/payment/:id"
+            element={
+              <MainLayoutComponent>
+                <Payment />
+              </MainLayoutComponent>
+            }
+          />
           <Route path="/register" element={<Register />} />
           <Route path="/smsForm" element={<SmsForm />} />
           <Route path="/confirmSmsForm" element={<ConfirmSmsForm />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/payment/:id" element={<Payment />} />
           <Route path="/admin/Counter" element={<AdminCounter />} />
           <Route path="/admin/newAdmin" element={<AddAdmin />} />
           <Route path="/admin/allAdmins" element={<AllAdmins />} />

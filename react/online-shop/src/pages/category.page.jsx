@@ -1,8 +1,9 @@
-import "../../public/css/shop/categoryPage.css";
-import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useParams, Link } from "react-router-dom";
 import { useCookies } from "react-cookie";
-import axios from "axios";
+import { getCategoryAndCategoryProductsService } from "../services/category.services";
+import "../public/css/shop/mainPage.css";
+import "../public/css/shop/categoryPage.css";
 
 const Category = () => {
   const params = useParams();
@@ -11,27 +12,19 @@ const Category = () => {
   const [cookies] = useCookies([]);
   const [navStatus, setNavStatus] = useState();
 
-  const sendParam = async () => {
-    await axios
-      .post("http://localhost:4000/adminPanel/category/category", params, {
-        withCredentials: true,
-      })
-      .then((res) => {
-        console.log(res.data.status);
-        setCategory(res.data.category);
-        setCategoryProducts(res.data.categoryProducts);
-      });
-  };
+  useEffect(() => {
+    const { category } = getCategoryAndCategoryProductsService(params);
+    setCategory(category);
+  }, []);
 
   useEffect(() => {
-    sendParam();
-  }, []);
+    console.log("category : ", category);
+  }, [category]);
 
   return (
     <>
-      {/* {navStatus && (navStatus === "Navbar" ? <Navbar /> : <Dashboard />)} */}
       {category && (
-        <div className="container-flud">
+        <div className="container-fluid">
           <div className="imageFrame">
             <img
               src={"/uploads/pictures/digitalMarketing.jpg"}

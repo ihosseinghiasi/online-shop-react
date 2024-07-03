@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import CategoryItem from "../components/home/categoryItem.component";
 import { useCookies } from "react-cookie";
+import CategoryItem from "../components/home/categoryItem.component";
 import { getCategoriesServices } from "../services/category.services";
 import "../public/css/shop/mainPage.css";
 
@@ -17,7 +17,6 @@ const HomePage = () => {
   useEffect(() => {
     const getCategories = async () => {
       const allCategories = await getCategoriesServices();
-      console.log(allCategories);
       setCategories(allCategories);
     };
     // if (cookies.comercial) {
