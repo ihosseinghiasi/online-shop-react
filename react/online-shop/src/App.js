@@ -1,8 +1,6 @@
 import React, { Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import Home from "./main/home";
-import Category from "./main/category";
 import Register from "./authentication/register";
 import SmsForm from "./authentication/smsForm";
 import ConfirmSmsForm from "./authentication/confirmSmsForm";
@@ -15,7 +13,6 @@ import AddUser from "./adminPanel/user/addUser";
 import AllUsers from "./adminPanel/user/allUsers";
 import ShowUser from "./adminPanel/user/showUser";
 import AddCategory from "./adminPanel/category/addCategory";
-import Dashboard from "./authentication/dashboard";
 import ShowCategory from "./adminPanel/category/showCategory";
 import AllCategories from "./adminPanel/category/allCategories";
 import AddProduct from "./adminPanel/product/addProduct";
@@ -40,16 +37,22 @@ const App = () => {
             path="/"
             element={
               <MainLayoutComponent>
-                <Home />
+                <HomePage />
               </MainLayoutComponent>
             }
           />
-          <Route path="/dashboard" element={<Dashboard />} />
+          {/* <Route
+            path="/:category/:id"
+            element={
+              <MainLayoutComponent>
+                <Category />
+              </MainLayoutComponent>
+            }
+          /> */}
           <Route path="/register" element={<Register />} />
           <Route path="/smsForm" element={<SmsForm />} />
           <Route path="/confirmSmsForm" element={<ConfirmSmsForm />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/:category/:id" element={<Category />} />
           <Route path="/payment/:id" element={<Payment />} />
           <Route path="/admin/Counter" element={<AdminCounter />} />
           <Route path="/admin/newAdmin" element={<AddAdmin />} />

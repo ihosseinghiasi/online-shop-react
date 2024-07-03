@@ -27,6 +27,18 @@ const Profile = () => {
       });
   };
 
+  const userUpdate = async (e) => {
+    e.preventDefault();
+    console.log(`${user._id}`);
+    await axios.put(
+      "http://localhost:4000/userPanel/profile/" + user._id,
+      user,
+      {
+        withCredentials: true,
+      }
+    );
+  };
+
   useEffect(() => {
     getPersianDate();
     verifyUser();
@@ -59,7 +71,7 @@ const Profile = () => {
 
               <div className="addBody col-8 mx-5">
                 {user && (
-                  <form className="mx-5">
+                  <form onSubmit={(e) => userUpdate(e)} className="mx-5">
                     <div className="row col-5 userForm">
                       <div>
                         <input

@@ -1,8 +1,8 @@
+import React from "react";
 import { Link } from "react-router-dom";
-import user from "../public/icons/user.svg";
-import "../public/css/shop/navbar.css";
+import "../../../public/css/shop/navbar.css";
 
-const Navbar = () => {
+const navbarComponent = () => {
   function userLogin() {
     localStorage.setItem("userType", "user");
   }
@@ -10,9 +10,8 @@ const Navbar = () => {
   function adminLogin() {
     localStorage.setItem("userType", "admin");
   }
-
   return (
-    <>
+    <div>
       <nav className="navbar navbar-expand-sm sticky-top navColor" dir="rtl">
         <div className="container-fluid">
           <button
@@ -68,7 +67,7 @@ const Navbar = () => {
             <ul className="navbar-nav me-auto me-5">
               <li className="nav-item ms-3">
                 <Link to="/smsForm" className="nav-link linkColor">
-                  <img src={user} alt="icon" />
+                  <img src={"./uploads/icons/user.svg"} alt="icon" />
                 </Link>
               </li>
               <li className="nav-item ms-3">
@@ -87,8 +86,8 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
-    </>
+    </div>
   );
 };
 
-export default Navbar;
+export default navbarComponent;

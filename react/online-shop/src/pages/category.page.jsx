@@ -1,7 +1,4 @@
-import Navbar from "./navbar";
-import Dashboard from "../authentication/dashboard";
-import Footer from "../components/layout/footer/footer.component";
-import "../public/css/shop/categoryPage.css";
+import "../../public/css/shop/categoryPage.css";
 import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
