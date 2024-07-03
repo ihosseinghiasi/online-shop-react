@@ -1,8 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
-
 import Footer from "../components/layout/footer/footer.component";
-
 import "../public/css/shop/mainPage.css";
 import "../public/css/shop/productPage.css";
 import { useParams } from "react-router-dom";
@@ -14,21 +11,6 @@ const Payment = () => {
   const [price, setPrice] = useState();
   const [count, setCount] = useState(1);
   const [tax, setTax] = useState();
-
-  const sendParam = async () => {
-    await axios
-      .post("http://localhost:4000/adminPanel/product/product", params, {
-        withCredentials: true,
-      })
-      .then((res) => {
-        console.log(res.data.status);
-        setProduct(res.data.product);
-      });
-  };
-
-  useEffect(() => {
-    sendParam();
-  }, []);
 
   const createArrayOfNumbers = () => {
     setArrayNumbers([]);
