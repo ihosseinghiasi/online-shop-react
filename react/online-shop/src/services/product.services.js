@@ -5,8 +5,5 @@ const getProductServices = async (params) => {
     .post("http://localhost:4000/adminPanel/product/product", params, {
       withCredentials: true,
     })
-    .then((res) => {
-      console.log(res.data.product);
-      return res.data.product;
-    });
+    .then((res) => {});
 };

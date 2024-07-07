@@ -13,7 +13,7 @@ export const getCategoryAndCategoryProductsService = async (params) => {
       withCredentials: true,
     })
     .then((res) => {
-      console.log(res.data.category);
-      return { category: res?.data?.category };
+      console.log(res.data);
+      return { category: res.data.category };
     });
 };
