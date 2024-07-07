@@ -21,7 +21,7 @@ export const Login = () => {
       })
       .then((res) => {
         if (res.status) {
-          navigate("/");
+          navigate("/dashboard");
         }
       });
   }
