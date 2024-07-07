@@ -1,6 +1,27 @@
-import React from "react";
+/* eslint-disable react-hooks/rules-of-hooks */
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useCookies } from "react-cookie";
+import { getAuthenticatedUser } from "../../../services/authenticatedUserServices";
+
 const navbarComponent = () => {
+  const [cookies, setCookie, removeCookie] = useCookies([]);
+  const [user, setUser] = useState();
+
+  useEffect(() => {
+    const getUser = async () => {
+      if (cookies.comercial) {
+        const user = await getAuthenticatedUser();
+        setUser(user);
+      }
+    };
+    getUser();
+  }, []);
+
+  useEffect(() => {
+    console.log(user);
+  }, [user]);
+
   function userLogin() {
     localStorage.setItem("userType", "user");
   }
