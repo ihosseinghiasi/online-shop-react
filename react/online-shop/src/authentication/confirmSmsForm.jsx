@@ -1,4 +1,4 @@
-import '../public/css/shop/smsForm.css'
+import '../css/shop/smsForm.css'
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Countdown from 'react-countdown';

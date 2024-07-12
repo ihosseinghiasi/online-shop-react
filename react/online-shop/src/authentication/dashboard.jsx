@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import axios from "axios";
 // import { ToastContainer, toast } from "react-toastify";
-import "../public/css/shop/mainPage.css";
+import "../css/shop/mainPage.css";
 import mainImage from "../public/pictures/shopping01.jpg";
 import Footer from "../components/layout/footer/footer.component";
 import CategoryItem from "../main/categoryItem";

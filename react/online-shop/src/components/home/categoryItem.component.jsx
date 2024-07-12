@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "../../public/css/shop/mainPage.css";
+import "../../css/shop/mainPage.css";
 
 const CategoryItem = ({ image, namak, title, id }) => {
   return (

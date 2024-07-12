@@ -3,14 +3,15 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import AdminNavbar from "../adminNavbar";
 import RightMenu from "../rightMenu";
-import "../../public/css/admin/category.css";
-import "../../public/css/admin/general.css";
-import defaultImage from "../../public/pictures/unimage.png";
+import "../../css/admin/category.css";
+import "../../css/admin/general.css";
 
 const AddCategory = () => {
   const [category, setCategory] = useState({});
   const [categoryImage, setCategoryImage] = useState();
-  const [UrlCategoryImage, setUrlCategoryImage] = useState(defaultImage);
+  const [UrlCategoryImage, setUrlCategoryImage] = useState(
+    "/uploads/pictures/unimage.png"
+  );
   const [persianDate, setPersianDate] = useState("");
   const fileUploadRef = useRef(null);
   const navigate = useNavigate();

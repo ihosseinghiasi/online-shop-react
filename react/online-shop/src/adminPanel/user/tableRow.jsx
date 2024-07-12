@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import "../../public/css/admin/admin.css";
-import "../../public/css/admin/general.css";
+import "../../css/admin/admin.css";
+import "../../css/admin/general.css";
 
 const TableRow = ({ index, id, email, lastName, handleDelete }) => {
   return (

@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import { getCategoryAndCategoryProductsService } from "../services/category.services";
-import "../public/css/shop/mainPage.css";
-import "../public/css/shop/categoryPage.css";
+import "../css/shop/mainPage.css";
+import "../css/shop/categoryPage.css";
 
 const Category = () => {
   const params = useParams();
@@ -27,7 +27,7 @@ const Category = () => {
         <div className="container-fluid">
           <div className="imageFrame">
             <img
-              src={"/uploads/pictures/digitalMarketing.jpg"}
+              src={"../uploads/pictures/digitalMarketing.jpg"}
               className="mainImage"
               alt="mainImage"
             />

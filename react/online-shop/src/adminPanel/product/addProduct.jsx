@@ -1,11 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "../../public/css/admin/general.css";
-import "../../public/css/admin/product.css";
+import "../../css/admin/general.css";
+import "../../css/admin/product.css";
 import RightMenu from "../rightMenu";
 import AdminNavbar from "../adminNavbar";
-import defaultImage from "../../public/pictures/unimage.png";
 // import { wordifyfa } from "../../public/wordifyfa/src/wordifyfa.ts";
 
 const AddProduct = () => {
@@ -13,7 +12,9 @@ const AddProduct = () => {
   const [fields, setFields] = useState([""]);
   const [categories, setCategories] = useState([]);
   const [productImage, setProductImage] = useState();
-  const [UrlProductImage, setUrlProductImage] = useState(defaultImage);
+  const [UrlProductImage, setUrlProductImage] = useState(
+    "/uploads/pictures/unimage.png"
+  );
   const [persianDate, setPersianDate] = useState("");
   const fileUploadRef = useRef(null);
   const navigate = useNavigate();

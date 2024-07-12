@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import CategoryItem from "../components/home/categoryItem.component";
 import { getCategoriesServices } from "../services/category.services";
-import "../public/css/shop/mainPage.css";
+import "../css/shop/mainPage.css";
 
 const HomePage = () => {
   const [categories, setCategories] = useState();
@@ -30,7 +30,7 @@ const HomePage = () => {
       <div className="container-flud">
         <div className="main">
           <img
-            src={"/uploads/pictures/shopping01.jpg"}
+            src={"../uploads/pictures/shopping01.jpg"}
             className="mainImage"
             alt="mainImage"
           />

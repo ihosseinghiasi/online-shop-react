@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import "../../public/css/admin/admin.css";
-import "../../public/css/admin/general.css";
+import "../../css/admin/admin.css";
+import "../../css/admin/general.css";
 import AdminNavbar from "../adminNavbar";
 import axios from "axios";
 import RightMenu from "../rightMenu";

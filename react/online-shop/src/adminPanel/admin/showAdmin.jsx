@@ -1,9 +1,9 @@
 import { React, useEffect, useState } from "react";
 import axios from "axios";
 
-import "../../public/css/admin/accordion.css";
-import "../../public/css/admin/general.css";
-import "../../public/css/admin/admin.css";
+import "../../css/admin/accordion.css";
+import "../../css/admin/general.css";
+import "../../css/admin/admin.css";
 
 import RightMenu from "../rightMenu";
 import AdminNavbar from "../adminNavbar";

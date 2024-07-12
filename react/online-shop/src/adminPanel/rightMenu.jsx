@@ -1,5 +1,5 @@
-import "../public/css/user/general.css";
-import "../public/css/admin/accordion.css";
+import "../css/user/general.css";
+import "../css/admin/accordion.css";
 import Accordion from "./accordion";
 import { faqs } from "./accordion-data";
 import { useState } from "react";
@@ -27,13 +27,12 @@ const RightMenu = () => {
           </div>
           <div role="button" className="noAccordion">
             <p>
-              {" "}
               <img
                 src={"/uploads/icons/home.svg"}
                 className="me-1 ms-1"
                 alt=""
-              />{" "}
-              پیشخوان{" "}
+              />
+              پیشخوان
             </p>
           </div>
 

@@ -7,6 +7,6 @@ const getProductServices = async (params) => {
     })
     .then((res) => {
       console.log(res.data.product);
-      return res.data.product;
+      return res?.data?.product;
     });
 };

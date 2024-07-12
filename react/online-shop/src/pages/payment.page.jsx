@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Footer from "../components/layout/footer/footer.component";
-import "../public/css/shop/mainPage.css";
-import "../public/css/shop/productPage.css";
+import "../css/shop/mainPage.css";
+import "../css/shop/productPage.css";
 import { useParams } from "react-router-dom";
 
 const Payment = () => {
