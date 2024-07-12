@@ -63,15 +63,14 @@ const HomePage = () => {
         </div>
         <p className="pCategories">انتخاب دسته بندی</p>
       </div>
-      {categories &&
-        categories.map((category) => (
-          <CategoryItem
-            image={category.image}
-            title={category.title}
-            id={category._id}
-            namak={category.categoryName}
-          />
-        ))}
+      {categories?.map((category) => (
+        <CategoryItem
+          image={category.image}
+          title={category.title}
+          id={category._id}
+          namak={category.categoryName}
+        />
+      ))}
     </div>
   );
 };

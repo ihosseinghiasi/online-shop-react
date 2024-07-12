@@ -92,11 +92,11 @@ const Payment = () => {
               >
                 <use href="#check-circle-fill" />
               </svg>
-              {product && (
+              {
                 <div>
-                  <strong> {product.title} </strong> به سبد خرید اضافه شد .
+                  <strong> {product?.title} </strong> به سبد خرید اضافه شد .
                 </div>
-              )}
+              }
             </div>
 
             <h3 className="mt-4 me-2">سبد خرید شما</h3>
@@ -120,7 +120,7 @@ const Payment = () => {
                         aria-label=".form-select example"
                         onChange={(e) => setCount(e.target.value)}
                       >
-                        {arrayNumbers.map((number) => (
+                        {arrayNumbers?.map((number) => (
                           <option> {number} </option>
                         ))}
                       </select>

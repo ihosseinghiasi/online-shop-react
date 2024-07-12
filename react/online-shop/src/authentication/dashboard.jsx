@@ -46,7 +46,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <NavbarDashboard fullName={user.firstName + user.lastName} />
+      <NavbarDashboard fullName={user?.firstName + user?.lastName} />
       <div className="container-flud">
         <div className="main">
           <img src={mainImage} className="mainImage" alt="mainImage" />

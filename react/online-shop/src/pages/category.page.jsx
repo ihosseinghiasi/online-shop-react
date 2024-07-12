@@ -22,49 +22,47 @@ const Category = () => {
   }, [category]);
 
   return (
-    <>
-      {category && (
-        <div className="container-fluid">
-          <div className="imageFrame">
-            <img
-              src={"../uploads/pictures/digitalMarketing.jpg"}
-              className="mainImage"
-              alt="mainImage"
-            />
-            <div className="titleFrame">
-              <h1>{category.title}</h1>
-            </div>
-          </div>
-          <div className="description" id="description">
-            {category.description}
-          </div>
-
-          <div className="productFrame">
-            {categoryProducts.map((product) => (
-              <>
-                <Link to={`/payment/${product._id}`}>
-                  <div
-                    className="productItem"
-                    style={{ pointerEvents: product.count === 0 && "none" }}
-                  >
-                    <img
-                      src={require(`../images/category/${product.image}`)}
-                      alt="productImage"
-                    />
-                    <p>{product.title}</p>
-                    <p className="price">
-                      <img src="/uploads/icons/dollar-sign.svg" alt="price" />
-                      قیمت : {product.price} تومان{" "}
-                    </p>
-                    <span> افزودن به سبد </span>
-                  </div>
-                </Link>
-              </>
-            ))}
+    <div>
+      <div className="container-fluid">
+        <div className="imageFrame">
+          <img
+            src={"../uploads/pictures/digitalMarketing.jpg"}
+            className="mainImage"
+            alt="mainImage"
+          />
+          <div className="titleFrame">
+            <h1>{category?.title}</h1>
           </div>
         </div>
-      )}
-    </>
+        <div className="description" id="description">
+          {category?.description}
+        </div>
+
+        <div className="productFrame">
+          {categoryProducts?.map((product) => (
+            <>
+              <Link to={`/payment/${product._id}`}>
+                <div
+                  className="productItem"
+                  style={{ pointerEvents: product.count === 0 && "none" }}
+                >
+                  <img
+                    src={require(`../images/category/${product.image}`)}
+                    alt="productImage"
+                  />
+                  <p>{product.title}</p>
+                  <p className="price">
+                    <img src="/uploads/icons/dollar-sign.svg" alt="price" />
+                    قیمت : {product.price} تومان{" "}
+                  </p>
+                  <span> افزودن به سبد </span>
+                </div>
+              </Link>
+            </>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 };
 
