@@ -1,8 +1,8 @@
-import "../css/admin/general.css";
-import "../css/admin/accordion.css";
+// import "../css/admin/general.css";
+// import "../css/admin/accordion.css";
 // import { Link } from "react-router-dom";
-import Accordion from "./accordion";
-import { faqs } from "./accordion-data";
+// import Accordion from "./accordion";
+// import { faqs } from "../components/layout/adminSidebar/data/sidebarItems";
 import { useState } from "react";
 
 const RightMenu = () => {
@@ -39,14 +39,14 @@ const RightMenu = () => {
           </div>
 
           <ul className="accordion">
-            {faqs.map((faq, index) => (
+            {/* {faqs.map((faq, index) => (
               <Accordion
                 onToggle={() => handleToggle(index)}
                 active={clicked === index}
                 key={index}
                 faq={faq}
               />
-            ))}
+            ))} */}
           </ul>
         </div>
       </div>

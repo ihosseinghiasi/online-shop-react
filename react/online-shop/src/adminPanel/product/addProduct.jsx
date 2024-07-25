@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../../css/admin/general.css";
 import "../../css/admin/product.css";
-import RightMenu from "../rightMenu";
 import AdminNavbar from "../adminNavbar";
 // import { wordifyfa } from "../../public/wordifyfa/src/wordifyfa.ts";
 
@@ -96,7 +95,6 @@ const AddProduct = () => {
       <div className="container-fluid">
         <AdminNavbar />
         <div className="row">
-          <RightMenu />
           <div className="col-10">
             <div className="col-11 mx-5 counter">
               <div className="titleCounter">

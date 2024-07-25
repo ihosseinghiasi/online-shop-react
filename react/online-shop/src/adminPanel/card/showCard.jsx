@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import "../../css/admin/admin.css";
-import "../../css/admin/general.css";
+// import "../../css/admin/general.css";
 import AdminNavbar from "../adminNavbar";
 import axios from "axios";
-import RightMenu from "../rightMenu";
 import { useParams } from "react-router-dom";
 
 const ShowCard = () => {
@@ -145,7 +144,6 @@ const ShowCard = () => {
       <div className="container-fluid">
         <AdminNavbar />
         <div className="row">
-          <RightMenu />
           <div className="col-10">
             <div className="col-11 mx-5 counter">
               <div className="titleCounter">

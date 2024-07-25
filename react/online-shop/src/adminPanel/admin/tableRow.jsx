@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import "../../css/admin/admin.css";
-import "../../css/admin/general.css";
-import axios from "axios";
+// import "../../css/admin/general.css";
 
 const TableRow = ({ index, id, email, lastName, department, handleDelete }) => {
   return (

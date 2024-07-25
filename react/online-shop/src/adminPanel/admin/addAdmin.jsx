@@ -1,7 +1,6 @@
-import "../../css/admin/accordion.css";
-import "../../css/admin/general.css";
+// import "../../css/admin/accordion.css";
+// import "../../css/admin/general.css";
 import "../../css/admin/admin.css";
-import RightMenu from "../rightMenu";
 import AdminNavbar from "../adminNavbar";
 import { React, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -60,7 +59,6 @@ const AddAdmin = () => {
       <AdminNavbar />
       <div className="container-fluid">
         <div className="row ">
-          <RightMenu />
           <div className="col-10">
             <div className="col-11 mx-5 counter">
               <div className="titleCounter">

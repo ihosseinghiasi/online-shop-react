@@ -1,8 +1,7 @@
-import "../../css/admin/accordion.css";
-import "../../css/admin/general.css";
+// import "../../css/admin/accordion.css";
+// import "../../css/admin/general.css";
 import "../../css/admin/admin.css";
 import AdminNavbar from "../adminNavbar";
-import RightMenu from "../rightMenu";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -55,7 +54,6 @@ const ShowUser = () => {
       <AdminNavbar />
       <div className="container-fluid">
         <div className="row">
-          <RightMenu />
           <div className="col-10">
             <div className="col-11 mx-5 counter">
               <div className="titleCounter">

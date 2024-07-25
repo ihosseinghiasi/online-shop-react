@@ -1,5 +1,4 @@
 import AdminNavbar from "../adminNavbar";
-import RightMenu from "../rightMenu";
 import { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
@@ -20,7 +19,6 @@ const AddTicket = () => {
       <AdminNavbar />
       <div class="container-fluid">
         <div class="row ">
-          <RightMenu />
           <div class="col-10">
             <div class="col-11 mx-5 counter">
               <div class="titleCounter">

@@ -1,7 +1,7 @@
-// import "../css/admin/general.css";
+import "../../../css/admin/general.css";
 import { Link } from "react-router-dom";
 
-const AdminNavbar = () => {
+const AdminNavbarComponent = () => {
   return (
     <>
       <div className="container-fluid bg-light navbarPanel">
@@ -48,4 +48,4 @@ const AdminNavbar = () => {
   );
 };
 
-export default AdminNavbar;
+export default AdminNavbarComponent;

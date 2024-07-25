@@ -1,4 +1,4 @@
-import "../css/user/accordion.css";
+// import "../css/user/accordion.css";
 import { useEffect, useRef, useState } from "react";
 import SubItem from "./subItem";
 const Accordion = ({ faq, onToggle, active }) => {

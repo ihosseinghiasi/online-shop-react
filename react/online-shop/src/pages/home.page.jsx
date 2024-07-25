@@ -2,7 +2,10 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import CategoryItem from "../components/home/categoryItem.component";
-import { getCategoriesServices } from "../services/category.services";
+import {
+  getCategoriesServices,
+  getCategoryAndCategoryProductsService,
+} from "../services/category.services";
 import "../css/shop/mainPage.css";
 
 const HomePage = () => {
@@ -16,8 +19,10 @@ const HomePage = () => {
 
   useEffect(() => {
     const getCategories = async () => {
-      const allCategories = await getCategoriesServices();
-      setCategories(allCategories);
+      getCategoriesServices().then((myCategories) => {
+        console.log(myCategories);
+        setCategories(myCategories);
+      });
     };
     // if (cookies.comercial) {
     //   navigate("/dashboard");

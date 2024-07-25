@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import AdminNavbar from "../adminNavbar";
-import RightMenu from "../rightMenu";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -93,7 +92,6 @@ const AddCard = () => {
       <div className="container-fluid">
         <AdminNavbar />
         <div className="row">
-          <RightMenu />
           <div className="col-10">
             <div className="col-11 mx-5 counter">
               <div className="titleCounter">

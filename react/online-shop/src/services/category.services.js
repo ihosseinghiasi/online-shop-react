@@ -1,10 +1,12 @@
 import axios from "axios";
 
 export const getCategoriesServices = async () => {
-  const categories = await axios.get(
-    "http://localhost:4000/adminPanel/category/allCategories"
-  );
-  return categories?.data?.categories;
+  await axios
+    .get("http://localhost:4000/adminPanel/category/allCategories")
+    .then((res) => {
+      // console.log(res.data.categories);
+      return "res?.data?.categories";
+    });
 };
 
 export const getCategoryAndCategoryProductsService = async (params) => {

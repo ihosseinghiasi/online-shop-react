@@ -1,4 +1,4 @@
-import "../css/admin/accordion.css";
+// import "../css/admin/accordion.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 const SubItem = ({ firstItem, secondItem, faq }) => {

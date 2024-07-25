@@ -5,7 +5,7 @@ import Register from "./authentication/register";
 import SmsForm from "./authentication/smsForm";
 import ConfirmSmsForm from "./authentication/confirmSmsForm";
 import Login from "./authentication/login";
-import AdminCounter from "./adminPanel/counter";
+import AdminCounter from "./pages/adminPanel/counter.page";
 import AddAdmin from "./adminPanel/admin/addAdmin";
 import AllAdmins from "./adminPanel/admin/allAdmins";
 import ShowAdmin from "./adminPanel/admin/showAdmin";
@@ -28,6 +28,7 @@ import UserCounter from "./userPanel/counter";
 import Profile from "./userPanel/profile/profile";
 import HomePage from "./pages/home.page";
 import MainLayoutComponent from "./components/layout/main-layout.component";
+import AdminLayoutComponent from "./components/layout/adminPanel-layout.component";
 
 const App = () => {
   return (
@@ -58,11 +59,18 @@ const App = () => {
               </MainLayoutComponent>
             }
           />
+          <Route
+            path="/admin/counter"
+            element={
+              <AdminLayoutComponent>
+                <AdminCounter />
+              </AdminLayoutComponent>
+            }
+          />
           <Route path="/register" element={<Register />} />
           <Route path="/smsForm" element={<SmsForm />} />
           <Route path="/confirmSmsForm" element={<ConfirmSmsForm />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/admin/Counter" element={<AdminCounter />} />
           <Route path="/admin/newAdmin" element={<AddAdmin />} />
           <Route path="/admin/allAdmins" element={<AllAdmins />} />
           <Route path="/admin/showAdmin/:id" element={<ShowAdmin />} />

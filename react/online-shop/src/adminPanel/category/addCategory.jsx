@@ -2,9 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import AdminNavbar from "../adminNavbar";
-import RightMenu from "../rightMenu";
 import "../../css/admin/category.css";
-import "../../css/admin/general.css";
+// import "../../css/admin/general.css";
 
 const AddCategory = () => {
   const [category, setCategory] = useState({});
@@ -59,7 +58,6 @@ const AddCategory = () => {
       <AdminNavbar />
       <div className="container-fluid">
         <div className="row">
-          <RightMenu />
           <div className="col-10">
             <div className="col-11 mx-5 counter">
               <div className="titleCounter">
