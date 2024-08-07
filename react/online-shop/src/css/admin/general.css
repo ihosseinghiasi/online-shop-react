@@ -34,19 +34,19 @@ body {
     font-family: VazirmatnPersian;
 }
 
-/* a{
+a{
     color: white;
-} */
+}
 
-/* .container {
+.container {
     width: 100%;
     max-width: 1800px;
     margin: 0px 200px;
     font-size: 1em;
-} */
+}
 
 
-/* .imageSize {
+.imageSize {
     width: 60px;
     height: 60px;
 }
@@ -121,9 +121,9 @@ body {
     height: 140px;
     width: 140px;
     margin: 5px 25px 0 0;
-} */
+} 
 
-/* .counter {
+.counter {
     position: relative;
     height: 70px;
     margin: 30px 0px 0px 0px;
@@ -137,7 +137,7 @@ body {
     height: 50%;
     width: 300px;
     float: right;
-} */
+}
 
 .parsianDate {
     height: 50%;

@@ -8,7 +8,7 @@ const TableRow = ({ index, id, email, lastName, handleDelete }) => {
       <tr>
         <td className="faField"> {index} </td>
         <td className="faField"> {lastName} </td>
-        <td className="enField"> {id} </td>
+        <td className="enField"> {email} </td>
         <td>
           <div class="container">
             <div class="row justify-content-center">

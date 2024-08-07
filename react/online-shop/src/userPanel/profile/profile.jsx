@@ -1,5 +1,3 @@
-import RightMenu from "../rightMenu";
-import UserNavbar from "../userNavbar";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -45,10 +43,8 @@ const Profile = () => {
   }, []);
   return (
     <>
-      <UserNavbar />
       <div className="container-fluid">
         <div className="row">
-          <RightMenu />
           <div className="col-10">
             <div className="col-11 mx-5 counter">
               <div className="titleCounter">

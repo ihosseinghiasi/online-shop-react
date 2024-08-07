@@ -1,4 +1,6 @@
 import "../../css/admin/general.css";
+import "../../css/admin/counter.css";
+import "../../css/admin/sidebar.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 

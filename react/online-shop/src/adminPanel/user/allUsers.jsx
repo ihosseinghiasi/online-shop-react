@@ -32,8 +32,8 @@ const AllUsers = () => {
 
   async function handleDelete(id) {
     await axios
-      .post(
-        "http://localhost:4000/adminPanel/user/deleteUser",
+      .delete(
+        `http://localhost:4000/adminPanel/user/deleteUser/${id}`,
         { id },
         {
           withCredentials: true,

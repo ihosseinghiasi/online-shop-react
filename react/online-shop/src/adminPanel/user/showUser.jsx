@@ -1,5 +1,3 @@
-// import "../../css/admin/accordion.css";
-// import "../../css/admin/general.css";
 import "../../css/admin/admin.css";
 import AdminNavbar from "../adminNavbar";
 import { useEffect, useState } from "react";
@@ -9,6 +7,7 @@ import axios from "axios";
 const ShowUser = () => {
   const [values, setValues] = useState({});
   const [persianDate, setPersianDate] = useState("");
+  const [id, setId] = useState();
   const params = useParams();
   const navigate = useNavigate();
 
@@ -25,6 +24,10 @@ const ShowUser = () => {
     }
   }, []);
 
+  useEffect(() => {
+    setId(values.id);
+  }, [values]);
+
   const getUser = async () => {
     await axios
       .post("http://localhost:4000/adminPanel/user/showUser", params)
@@ -33,20 +36,22 @@ const ShowUser = () => {
       });
   };
 
-  const upadteUser = async () => {
+  const updateUser = async (e) => {
+    e.preventDefault();
     await axios
-      .post(
-        "http://localhost:4000/adminPanel/user/updateUser",
+      .put(
+        `http://localhost:4000/adminPanel/user/updateUser/${id}`,
+        { ...values },
         {
-          ...values,
-        },
-        { withCredentials: true }
+          headers: { accept: "*/*", "Content-Type": "application/json" },
+        }
       )
       .then((res) => {
-        if (res.data.status) {
+        if (res?.data?.status) {
           navigate("/admin/allUsers");
         }
-      });
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -75,7 +80,7 @@ const ShowUser = () => {
               </div>
 
               <div className="addBody col-8 mx-5">
-                <form onSubmit={(e) => upadteUser(e)} className="mx-5">
+                <form onSubmit={(e) => updateUser(e)} className="mx-5">
                   <div className="row col-5 userForm">
                     <div>
                       <input
