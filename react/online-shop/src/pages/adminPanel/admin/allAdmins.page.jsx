@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import "../../css/admin/admin.css";
-import AdminNavbar from "../adminNavbar";
+import "../../../css/admin/admin.css";
+import AdminNavbar from "../../../components/layout/header/adminPanelNavbar.component";
 import axios from "axios";
-import TableRow from "./tableRow";
+import TableRow from "./tableRow.page";
 import { useNavigate } from "react-router-dom";
 
 const AllAdmins = () => {

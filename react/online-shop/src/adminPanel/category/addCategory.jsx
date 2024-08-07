@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import AdminNavbar from "../adminNavbar";
 import "../../css/admin/category.css";
-// import "../../css/admin/general.css";
 
 const AddCategory = () => {
   const [category, setCategory] = useState({});

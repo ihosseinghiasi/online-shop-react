@@ -6,12 +6,12 @@ import SmsForm from "./authentication/smsForm";
 import ConfirmSmsForm from "./authentication/confirmSmsForm";
 import Login from "./authentication/login";
 import AdminCounter from "./pages/adminPanel/counter.page";
-import AddAdmin from "./adminPanel/admin/addAdmin";
-import AllAdmins from "./adminPanel/admin/allAdmins";
-import ShowAdmin from "./adminPanel/admin/showAdmin";
-import AddUser from "./adminPanel/user/addUser";
-import AllUsers from "./adminPanel/user/allUsers";
-import ShowUser from "./adminPanel/user/showUser";
+import AddAdmin from "./pages/adminPanel/admin/addAdmin.page";
+import AllAdmins from "./pages/adminPanel/admin/allAdmins.page";
+import ShowAdmin from "./pages/adminPanel/admin/showAdmin.page";
+import AddUser from "./pages/adminPanel/user/addUser.page";
+import AllUsers from "./pages/adminPanel/user/allUsers.page";
+import ShowUser from "./pages/adminPanel/user/showUser.page";
 import AddCategory from "./adminPanel/category/addCategory";
 import ShowCategory from "./adminPanel/category/showCategory";
 import AllCategories from "./adminPanel/category/allCategories";
@@ -67,16 +67,58 @@ const App = () => {
               </AdminLayoutComponent>
             }
           />
+          <Route
+            path="/admin/newAdmin"
+            element={
+              <AdminLayoutComponent>
+                <AddAdmin />
+              </AdminLayoutComponent>
+            }
+          />
+          <Route
+            path="/admin/allAdmins"
+            element={
+              <AdminLayoutComponent>
+                <AllAdmins />
+              </AdminLayoutComponent>
+            }
+          />
+          <Route
+            path="/admin/showAdmin/:id"
+            element={
+              <AdminLayoutComponent>
+                <ShowAdmin />
+              </AdminLayoutComponent>
+            }
+          />
+          <Route
+            path="/admin/newUser"
+            element={
+              <AdminLayoutComponent>
+                <AddUser />
+              </AdminLayoutComponent>
+            }
+          />
+          <Route
+            path="/admin/allUsers"
+            element={
+              <AdminLayoutComponent>
+                <AllUsers />
+              </AdminLayoutComponent>
+            }
+          />
+          <Route
+            path="/admin/showUser/:id"
+            element={
+              <AdminLayoutComponent>
+                <ShowUser />
+              </AdminLayoutComponent>
+            }
+          />
           <Route path="/register" element={<Register />} />
           <Route path="/smsForm" element={<SmsForm />} />
           <Route path="/confirmSmsForm" element={<ConfirmSmsForm />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/admin/newAdmin" element={<AddAdmin />} />
-          <Route path="/admin/allAdmins" element={<AllAdmins />} />
-          <Route path="/admin/showAdmin/:id" element={<ShowAdmin />} />
-          <Route path="/admin/newUser" element={<AddUser />} />
-          <Route path="/admin/allUsers" element={<AllUsers />} />
-          <Route path="/admin/showUser/:id" element={<ShowUser />} />
           <Route path="/admin/newCategory" element={<AddCategory />} />
           <Route path="/admin/allCategories" element={<AllCategories />} />
           <Route path="/admin/showCategory/:id" element={<ShowCategory />} />

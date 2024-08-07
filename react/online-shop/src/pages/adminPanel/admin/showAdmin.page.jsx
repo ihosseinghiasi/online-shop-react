@@ -1,11 +1,11 @@
 import { React, useEffect, useState } from "react";
 import axios from "axios";
-import "../../css/admin/admin.css";
+import "../../../css/admin/admin.css";
 
-import AdminNavbar from "../adminNavbar";
+import AdminNavbar from "../../../components/layout/header/adminPanelNavbar.component";
 import { useParams, useNavigate } from "react-router-dom";
-import { getPersianDateService } from "../../services/date.services";
-import { getAdminServices } from "../../services/admin.services";
+import { getPersianDateService } from "../../../services/date.services";
+import { getAdminServices } from "../../../services/admin.services";
 
 const ShowAdmin = () => {
   const [persianDate, setPersianDate] = useState("");

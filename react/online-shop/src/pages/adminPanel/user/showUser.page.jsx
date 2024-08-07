@@ -1,21 +1,14 @@
-// import "../../css/admin/accordion.css";
-// import "../../css/admin/general.css";
-import "../../css/admin/admin.css";
-import AdminNavbar from "../adminNavbar";
+import "../../../css/admin/admin.css";
+import "../../../css/admin/general.css";
 import { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
-const AddUser = () => {
-  const [values, setValues] = useState({
-    firstName: "",
-    lastName: "",
-    phoneNumber: "",
-    email: "",
-    password: "",
-  });
+const ShowUser = () => {
+  const [values, setValues] = useState({});
   const [persianDate, setPersianDate] = useState("");
-
+  const [id, setId] = useState();
+  const params = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -25,35 +18,50 @@ const AddUser = () => {
       });
     };
     getPersianDate();
+
+    if (params) {
+      getUser();
+    }
   }, []);
 
-  const handleSubmit = async (e) => {
+  useEffect(() => {
+    setId(values.id);
+  }, [values]);
+
+  const getUser = async () => {
+    await axios
+      .post("http://localhost:4000/adminPanel/user/showUser", params)
+      .then((res) => {
+        setValues(res.data.user);
+      });
+  };
+
+  const updateUser = async (e) => {
     e.preventDefault();
     await axios
-      .post(
-        "http://localhost:4000/adminPanel/user/addUser",
+      .put(
+        `http://localhost:4000/adminPanel/user/updateUser/${id}`,
+        { ...values },
         {
-          ...values,
-        },
-        {
-          withCredentials: true,
+          headers: { accept: "*/*", "Content-Type": "application/json" },
         }
       )
       .then((res) => {
-        console.log(res.data);
-        navigate("/admin/allUsers");
-      });
+        if (res?.data?.status) {
+          navigate("/admin/allUsers");
+        }
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
     <>
-      <AdminNavbar />
       <div className="container-fluid">
         <div className="row">
-          <div className="col-10">
+          <div className="col-12">
             <div className="col-11 mx-5 counter">
               <div className="titleCounter">
-                <p> پیشخوان / افزودن کاربر </p>
+                <p> پیشخوان / ویرایش کاربر </p>
               </div>
               <div className="d-flex justify-content-start parsianDate">
                 <p>{persianDate}</p>
@@ -67,11 +75,11 @@ const AddUser = () => {
                   className="ms-2"
                   alt=""
                 />
-                افزودن کاربر
+                ویرایش کاربر
               </div>
 
               <div className="addBody col-8 mx-5">
-                <form onSubmit={(e) => handleSubmit(e)} className="mx-5">
+                <form onSubmit={(e) => updateUser(e)} className="mx-5">
                   <div className="row col-5 userForm">
                     <div>
                       <input
@@ -79,6 +87,7 @@ const AddUser = () => {
                         className="form-control form-control mt-3"
                         placeholder="نام"
                         name="firstName"
+                        value={values.firstName}
                         onChange={(e) =>
                           setValues({
                             ...values,
@@ -91,6 +100,7 @@ const AddUser = () => {
                         className="form-control form-control mt-3"
                         placeholder="نام خانوادگی"
                         name="lastName"
+                        value={values.lastName}
                         onChange={(e) =>
                           setValues({
                             ...values,
@@ -103,6 +113,7 @@ const AddUser = () => {
                         className="form-control form-control mt-3"
                         placeholder="ایمیل"
                         name="email"
+                        value={values.email}
                         onChange={(e) =>
                           setValues({
                             ...values,
@@ -115,6 +126,7 @@ const AddUser = () => {
                         className="form-control form-control mt-3"
                         placeholder="شماره همراه"
                         name="phoneNumber"
+                        value={values.phoneNumber}
                         onChange={(e) =>
                           setValues({
                             ...values,
@@ -128,6 +140,7 @@ const AddUser = () => {
                         placeholder="کلمه عبور"
                         name="password"
                         id="password"
+                        // value={values.password}
                         onChange={(e) =>
                           setValues({
                             ...values,
@@ -146,6 +159,7 @@ const AddUser = () => {
                         placeholder="تکرار کلمه عبور"
                         name="confirmPassword"
                         id="confirmPassword"
+                        // value={values.password}
                       />
                       <i
                         className="bi bi-eye-slash confirmPasswordEye"
@@ -171,4 +185,4 @@ const AddUser = () => {
   );
 };
 
-export default AddUser;
+export default ShowUser;

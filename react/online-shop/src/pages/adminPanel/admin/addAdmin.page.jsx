@@ -1,7 +1,7 @@
-import "../../css/admin/general.css";
-import "../../css/admin/admin.css";
+import "../../../css/admin/general.css";
+import "../../../css/admin/admin.css";
 
-import AdminNavbar from "../adminNavbar";
+import AdminNavbar from "../../../adminPanel/adminNavbar";
 import { React, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";

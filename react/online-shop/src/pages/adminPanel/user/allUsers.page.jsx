@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import "../../css/admin/admin.css";
-import "../../css/admin/general.css";
-import AdminNavbar from "../adminNavbar";
+import "../../../css/admin/admin.css";
+import "../../../css/admin/general.css";
+import "../../../css/admin/sidebar.css"
 import axios from "axios";
-import TableRow from "./tableRow";
+import TableRow from "./tableRow.page";
 import { useNavigate } from "react-router-dom";
 
 const AllUsers = () => {
@@ -41,10 +41,9 @@ const AllUsers = () => {
 
   return (
     <>
-      <AdminNavbar />
       <div className="container-fluid">
         <div className="row">
-          <div className="col-10">
+          <div className="col-12">
             <div className="col-11 mx-5 counter">
               <div className="titleCounter faField">
                 <p>پیشخوان / مدیران سایت </p>

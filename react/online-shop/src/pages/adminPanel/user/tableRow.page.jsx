@@ -1,20 +1,20 @@
 import { Link } from "react-router-dom";
-import "../../css/admin/admin.css";
+import "../../../css/admin/admin.css";
+import "../../../css/admin/general.css";
 
-const TableRow = ({ index, id, email, lastName, department, handleDelete }) => {
+const TableRow = ({ index, id, email, lastName, handleDelete }) => {
   return (
     <>
       <tr>
         <td className="faField"> {index} </td>
         <td className="faField"> {lastName} </td>
         <td className="enField"> {email} </td>
-        <td className="faField"> {department} </td>
         <td>
           <div class="container">
             <div class="row justify-content-center">
               <div class="col-4">
                 <Link
-                  to={`/admin/showAdmin/${id}`}
+                  to={`/admin/showUser/${id}`}
                   class="btn btn-success"
                   role="button"
                 >
