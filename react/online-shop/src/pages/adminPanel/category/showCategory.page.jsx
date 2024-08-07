@@ -1,18 +1,23 @@
+import "../../../css/admin/category.css";
+import { useParams } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import AdminNavbar from "../adminNavbar";
-import "../../css/admin/category.css";
 
-const AddCategory = () => {
-  const [category, setCategory] = useState({});
-  const [categoryImage, setCategoryImage] = useState();
-  const [UrlCategoryImage, setUrlCategoryImage] = useState(
-    "/uploads/pictures/unimage.png"
-  );
+const ShowCategory = () => {
+  const params = useParams();
   const [persianDate, setPersianDate] = useState("");
+  const [category, setCategory] = useState({});
+  const [UrlCategoryImage, setUrlCategoryImage] = useState("");
+  const [categoryImage, setCategoryImage] = useState("");
   const fileUploadRef = useRef(null);
-  const navigate = useNavigate();
+
+  const getCategory = async () => {
+    await axios
+      .post("http://localhost:4000/adminPanel/category/showCategory", params)
+      .then((response) => {
+        setCategory(response.data.category);
+      });
+  };
 
   useEffect(() => {
     const getPersianDate = async () => {
@@ -20,11 +25,13 @@ const AddCategory = () => {
         setPersianDate(res.data);
       });
     };
+
     getPersianDate();
+    if (params) getCategory();
   }, []);
 
-  const handleImageUpload = (event) => {
-    event.preventDefault();
+  const handleImageUpload = (e) => {
+    e.preventDefault();
     fileUploadRef.current.click();
   };
 
@@ -34,30 +41,30 @@ const AddCategory = () => {
     setUrlCategoryImage(URL.createObjectURL(uploadedFile));
   };
 
-  const submitHandler = async (e) => {
-    e.preventDefault();
+  const submitHandler = async () => {
     const formData = new FormData();
-    formData.append("file", categoryImage);
+    if (categoryImage) formData.append("file", categoryImage);
+    formData.append("id", category._id);
     formData.append("categoryName", category.categoryName);
     formData.append("title", category.title);
     formData.append("description", category.description);
+    formData.append("image", category.image);
 
     await axios
-      .post("http://localhost:4000/adminPanel/category/addCategory", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      })
+      .post(
+        "http://localhost:4000/adminPanel/category/updateCategory",
+        formData
+      )
       .then((res) => {
-        navigate("/admin/allCategories");
-        console.log(res.data.status);
+        console.log(res);
       });
   };
 
   return (
     <>
-      <AdminNavbar />
       <div className="container-fluid">
         <div className="row">
-          <div className="col-10">
+          <div className="col-12">
             <div className="col-11 mx-5 counter">
               <div className="titleCounter">
                 <p> پیشخوان / دسته بندی ها / افزودن دسته بندی </p>
@@ -71,7 +78,7 @@ const AddCategory = () => {
               <div className="addtitle my-3 mx-2 col-8">
                 <img
                   src={"/uploads/icons/plus-square-black.svg"}
-                  alt="categoryPicture"
+                  alt="category"
                 />
                 افزودن دسته بندی
               </div>
@@ -88,6 +95,7 @@ const AddCategory = () => {
                         type="text"
                         name="categoryName"
                         id="categoryName"
+                        value={category.categoryName}
                         className="form-control mt-3 enField"
                         placeholder="نامک دسته بندی"
                         onChange={(e) =>
@@ -101,7 +109,7 @@ const AddCategory = () => {
                         className="badge bg-secondary nemeAddressBadge"
                         id="namak"
                       >
-                        http://localhost/adminPanel/category/
+                        http://localhost/admin-cPanel/category/
                         {category.categoryName}
                       </span>
                       <p className="mt-5 text-secondary">
@@ -113,14 +121,30 @@ const AddCategory = () => {
                       </p>
                     </div>
                     <div className="col-4 fileUloadArea">
-                      <div className="imageUpload">
-                        <img
-                          src={UrlCategoryImage}
-                          alt="categoryImage"
-                          className="categoryImage"
-                          onClick={handleImageUpload}
-                        />
-                      </div>
+                      {category.image &&
+                        (UrlCategoryImage ? (
+                          <div className="imageUpload">
+                            <img
+                              src={UrlCategoryImage}
+                              name="newCategoryImage"
+                              id="newCategoryImage"
+                              alt="categoryImage"
+                              className="categiryImage"
+                              onClick={handleImageUpload}
+                            />
+                          </div>
+                        ) : (
+                          <div className="imageUpload">
+                            <img
+                              src={require(`../../../images/category/${category.image}`)}
+                              name="categoryImage"
+                              id="categoryImage"
+                              alt="categoryImage"
+                              className="categoryImage"
+                              onClick={handleImageUpload}
+                            />
+                          </div>
+                        ))}
 
                       <input
                         type="file"
@@ -134,7 +158,7 @@ const AddCategory = () => {
                       <input
                         type="submit"
                         id="submit"
-                        className="btn btn-success mt-1 btnSubmit"
+                        className="btn btn-success mt-1 mb-1 btnSubmit"
                         value="ذخیره دسته بندی"
                       />
                     </div>
@@ -143,6 +167,7 @@ const AddCategory = () => {
                         type="text"
                         name="title"
                         className="form-control faField"
+                        value={category.title}
                         id="categoryTitle"
                         placeholder="عنوان دسته بندی"
                         onChange={(e) =>
@@ -156,6 +181,7 @@ const AddCategory = () => {
                         <textarea
                           name="description"
                           id="editor"
+                          value={category.description}
                           className="form-control"
                           cols="30"
                           rows="10"
@@ -179,4 +205,4 @@ const AddCategory = () => {
   );
 };
 
-export default AddCategory;
+export default ShowCategory;

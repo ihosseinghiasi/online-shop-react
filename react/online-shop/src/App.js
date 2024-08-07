@@ -12,9 +12,9 @@ import ShowAdmin from "./pages/adminPanel/admin/showAdmin.page";
 import AddUser from "./pages/adminPanel/user/addUser.page";
 import AllUsers from "./pages/adminPanel/user/allUsers.page";
 import ShowUser from "./pages/adminPanel/user/showUser.page";
-import AddCategory from "./adminPanel/category/addCategory";
-import ShowCategory from "./adminPanel/category/showCategory";
-import AllCategories from "./adminPanel/category/allCategories";
+import AddCategory from "./pages/adminPanel/category/addCategory.page";
+import ShowCategory from "./pages/adminPanel/category/showCategory.page";
+import AllCategories from "./pages/adminPanel/category/allCategories.page";
 import AddProduct from "./adminPanel/product/addProduct";
 import AllProducts from "./adminPanel/product/allProducts";
 import ShowProduct from "./adminPanel/product/showProduct";
@@ -115,13 +115,34 @@ const App = () => {
               </AdminLayoutComponent>
             }
           />
+          <Route
+            path="/admin/newCategory"
+            element={
+              <AdminLayoutComponent>
+                <AddCategory />
+              </AdminLayoutComponent>
+            }
+          />
+          <Route
+            path="/admin/allCategories"
+            element={
+              <AdminLayoutComponent>
+                <AllCategories />
+              </AdminLayoutComponent>
+            }
+          />
+          <Route
+            path="/admin/showCategory/:id"
+            element={
+              <AdminLayoutComponent>
+                <ShowCategory />
+              </AdminLayoutComponent>
+            }
+          />
           <Route path="/register" element={<Register />} />
           <Route path="/smsForm" element={<SmsForm />} />
           <Route path="/confirmSmsForm" element={<ConfirmSmsForm />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/admin/newCategory" element={<AddCategory />} />
-          <Route path="/admin/allCategories" element={<AllCategories />} />
-          <Route path="/admin/showCategory/:id" element={<ShowCategory />} />
           <Route path="/admin/newProduct" element={<AddProduct />} />
           <Route path="/admin/allProducts" element={<AllProducts />} />
           <Route path="/admin/showProduct/:id" element={<ShowProduct />} />
