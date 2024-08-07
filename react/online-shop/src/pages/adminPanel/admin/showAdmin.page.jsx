@@ -1,8 +1,6 @@
 import { React, useEffect, useState } from "react";
 import axios from "axios";
 import "../../../css/admin/admin.css";
-
-import AdminNavbar from "../../../components/layout/header/adminPanelNavbar.component";
 import { useParams, useNavigate } from "react-router-dom";
 import { getPersianDateService } from "../../../services/date.services";
 import { getAdminServices } from "../../../services/admin.services";
@@ -14,17 +12,17 @@ const ShowAdmin = () => {
   const params = useParams();
   const navigate = useNavigate();
 
-  const getAdmin = () => {
-    getAdminServices(params).then((res) => {
-      setValues(res);
-    });
-  };
+  // const getAdmin = () => {
+  //   getAdminServices(params).then((res) => {
+  //     setValues(res);
+  //   });
+  // };
 
   useEffect(() => {
     getPersianDateService().then((res) => {
       setPersianDate(res);
     });
-    params && getAdmin(params);
+    // params && getAdmin(params);
   }, []);
 
   useEffect(() => {
@@ -49,10 +47,9 @@ const ShowAdmin = () => {
 
   return (
     <>
-      <AdminNavbar />
       <div className="container-fluid">
         <div className="row ">
-          <div className="col-10">
+          <div className="col-12">
             <div className="col-11 mx-5 counter">
               <div className="titleCounter">
                 <p>پیشخوان / ویرایش مدیر</p>

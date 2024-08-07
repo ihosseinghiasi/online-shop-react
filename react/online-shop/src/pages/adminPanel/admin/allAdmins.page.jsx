@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import "../../../css/admin/admin.css";
-import AdminNavbar from "../../../components/layout/header/adminPanelNavbar.component";
 import axios from "axios";
 import TableRow from "./tableRow.page";
 import { useNavigate } from "react-router-dom";
@@ -39,10 +38,9 @@ const AllAdmins = () => {
 
   return (
     <>
-      <AdminNavbar />
       <div className="container-fluid">
         <div className="row">
-          <div className="col-10">
+          <div className="col-12">
             <div className="col-11 mx-5 counter">
               <div className="titleCounter faField">
                 <p>پیشخوان / مدیران سایت </p>

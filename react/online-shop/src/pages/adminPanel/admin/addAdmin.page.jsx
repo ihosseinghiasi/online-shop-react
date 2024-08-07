@@ -1,7 +1,5 @@
 import "../../../css/admin/general.css";
 import "../../../css/admin/admin.css";
-
-import AdminNavbar from "../../../adminPanel/adminNavbar";
 import { React, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -56,10 +54,9 @@ const AddAdmin = () => {
 
   return (
     <>
-      <AdminNavbar />
       <div className="container-fluid">
         <div className="row ">
-          <div className="col-10">
+          <div className="col-12">
             <div className="col-11 mx-5 counter">
               <div className="titleCounter">
                 <p> پیشخوان / افزودن مدیر </p>
