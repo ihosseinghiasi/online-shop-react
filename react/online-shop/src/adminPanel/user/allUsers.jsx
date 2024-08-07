@@ -9,7 +9,6 @@ import { useNavigate } from "react-router-dom";
 const AllUsers = () => {
   const [users, setUsers] = useState([]);
   const [persianDate, setPersianDate] = useState("");
-  const [userId, setUserId] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -31,18 +30,13 @@ const AllUsers = () => {
   }, []);
 
   async function handleDelete(id) {
-    await axios
-      .delete(
-        `http://localhost:4000/adminPanel/user/deleteUser/${id}`,
-        { id },
-        {
-          withCredentials: true,
-        }
-      )
-      .then((res) => {
-        if (res.data.status) {
-        }
-      });
+    await axios.delete(
+      `http://localhost:4000/adminPanel/user/deleteUser/${id}`,
+      { id },
+      {
+        withCredentials: true,
+      }
+    );
   }
 
   return (

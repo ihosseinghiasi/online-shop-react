@@ -1,6 +1,6 @@
-// import "../../css/admin/accordion.css";
-// import "../../css/admin/general.css";
+import "../../css/admin/general.css";
 import "../../css/admin/admin.css";
+
 import AdminNavbar from "../adminNavbar";
 import { React, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";

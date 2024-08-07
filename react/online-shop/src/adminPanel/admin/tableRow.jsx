@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import "../../css/admin/admin.css";
-// import "../../css/admin/general.css";
 
 const TableRow = ({ index, id, email, lastName, department, handleDelete }) => {
   return (
@@ -8,7 +7,7 @@ const TableRow = ({ index, id, email, lastName, department, handleDelete }) => {
       <tr>
         <td className="faField"> {index} </td>
         <td className="faField"> {lastName} </td>
-        <td className="enField"> {id} </td>
+        <td className="enField"> {email} </td>
         <td className="faField"> {department} </td>
         <td>
           <div class="container">

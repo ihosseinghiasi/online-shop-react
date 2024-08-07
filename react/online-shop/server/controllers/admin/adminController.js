@@ -81,12 +81,12 @@ module.exports.updateAdmin = async (req, res, next) => {
 
 module.exports.deleteAdmin = async (req, res, next) => {
     try {
-        const {adminId} = req.body
-        const deleteAdmin = await Admin.findByIdAndDelete({ _id: adminId })
+        const id = req.params.id
+        const deleteAdmin = await Admin.findByIdAndDelete({ _id: id })
         if(deleteAdmin) {
             return res.json({ status: "OK" })
         }
     } catch (err) {
-        
+        next(err)
     }
 }

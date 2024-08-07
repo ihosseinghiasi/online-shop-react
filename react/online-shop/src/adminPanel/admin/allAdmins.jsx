@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import "../../css/admin/admin.css";
-// import "../../css/admin/general.css";
 import AdminNavbar from "../adminNavbar";
 import axios from "axios";
 import TableRow from "./tableRow";
@@ -30,28 +29,13 @@ const AllAdmins = () => {
     getAllAdmins();
   }, []);
 
-  useEffect(() => {
-    async function sendAdminId() {
-      await axios
-        .post(
-          "http://localhost:4000/adminPanel/admin/deleteAdmin",
-          { adminId },
-          {
-            withCredentials: true,
-          }
-        )
-        .then((res) => {
-          if (res.data) {
-            console.log(res.data);
-          }
-        });
-    }
-    sendAdminId();
-  }, [adminId]);
-
-  async function handleDelete(id) {
-    setAdminId(id);
-  }
+  const handleDelete = async (id) => {
+    await axios.delete(
+      `http://localhost:4000/adminPanel/admin/deleteAdmin/${id}`,
+      { id },
+      { withCredentials: true }
+    );
+  };
 
   return (
     <>

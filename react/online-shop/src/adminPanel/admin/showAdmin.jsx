@@ -1,7 +1,5 @@
 import { React, useEffect, useState } from "react";
 import axios from "axios";
-
-// import "../../css/admin/general.css";
 import "../../css/admin/admin.css";
 
 import AdminNavbar from "../adminNavbar";
@@ -11,7 +9,8 @@ import { getAdminServices } from "../../services/admin.services";
 
 const ShowAdmin = () => {
   const [persianDate, setPersianDate] = useState("");
-  let [values, setValues] = useState({});
+  const [values, setValues] = useState({});
+  const [adminId, setAdminId] = useState();
   const params = useParams();
   const navigate = useNavigate();
 
@@ -28,10 +27,14 @@ const ShowAdmin = () => {
     params && getAdmin(params);
   }, []);
 
+  useEffect(() => {
+    setAdminId(values._id);
+  }, [values]);
+
   const updateAdmin = async () => {
     await axios
-      .post(
-        "http://localhost:4000/adminPanel/admin/updateAdmin",
+      .put(
+        `http://localhost:4000/adminPanel/admin/updateAdmin/${adminId}`,
         {
           ...values,
         },
